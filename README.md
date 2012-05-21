@@ -15,6 +15,7 @@ ln -sfn ~/.vim/vimrc .vimrc
 ```
 4.install `Vundle`
 ```
+mkdir ~/.vim/bundle
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 ```
 5.install plugins with `Vundle`
