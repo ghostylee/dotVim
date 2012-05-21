@@ -34,6 +34,7 @@ Launch `vim`, run `:BundleInstall`
 ```
 4.install `Vundle`
 ```
+mkdir ~/.vim/bundle
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 ```
 to make vundle work in windows, you may take a look at [Vundle for Windows](https://github.com/gmarik/vundle/wiki/Vundle-for-Windows)
