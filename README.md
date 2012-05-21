@@ -20,6 +20,7 @@ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 ```
 5.install plugins with `Vundle`
 Launch `vim`, run `:BundleInstall`
+
 6.install ctags
 ```
 sudo apt-get install ctags
@@ -50,9 +51,14 @@ to make vundle work in windows, you may take a look at [Vundle for Windows](http
 
 5.install plugins with `Vundle`
 Launch `vim`, run `:BundleInstall`
+
 6.install ctags
-  1)download ctags from http://prdownloads.sourceforge.net/ctags/ctags58.zip
-  2)unzip it to wherever you want.
+  1)download ctags from `http://prdownloads.sourceforge.net/ctags/ctags58.zip`
+
+  2)unzip it to wherever you want
+
   3)add ctags.exe to PATH
-7.install font for fancy powerline here i use `yahei consolas hybrid for powerline` 
+
+7.install font for fancy powerline here i use `yahei consolas hybrid for powerline`
+
 just double click the yaheiconsolashybrid_-Powerline.ttf and click `install`
