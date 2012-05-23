@@ -157,7 +157,7 @@ if has('win32') || has('win64')
   set columns=120
 
   " Windows has a nasty habit of launching gVim in the wrong working directory
-  cd ~
+  "cd ~
 elseif has('gui_macvim')
   " MacVim
 
@@ -221,11 +221,7 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 " Toggle spelling mode with ,s
 nmap <silent> <leader>s :set spell!<CR>
 " Edit vimrc with ,v
-if has('win32') || has('win64')
-  nmap <silent> <leader>v :e ~/vimfiles/vimrc<CR>
-else
-  nmap <silent> <leader>v :e ~/.vim/vimrc<CR>
-endif
+nmap <silent> <leader>v :e ~/.vim/vimrc<CR>
 
 " Window Movement
 nmap <silent> <C-h> :wincmd h<CR>
@@ -264,13 +260,18 @@ nnoremap al :TagbarToggle<cr>
 "}}}
 " ctags {{{
 " ---------------
-set tags=tags;  "; here let vim go to up folds until find one tags file
+set tags=tags;,~/_vimtags  "; here let vim go to up folds until find one tags file
+nnoremap ec :!start ctags -R --fields=+l --c-kinds=+pl --c++-kinds=+pl .<cr>
 "}}}
 " easytags {{{
 " ---------------
 Bundle 'xolox/vim-easytags'
 Bundle 'xolox/vim-shell'
-nnoremap <silent><F4> :UpdateTags -R --c++-kinds=+pl --fields=+iaS --extra=+q .<CR>
+let g:easytags_dynamic_files = 1  " allow easytags to load ./tags file
+let g:easytags_on_cursorhold = 0  " don't update tags on cursorhold
+nnoremap <silent><F4> :UpdateTags -R --c-kinds=+pl--c++-kinds=+pl --fields=+iaS --extra=+q .<CR>
+
+autocmd FileType c HighlightTags
 "}}}
 " Neocachecompl {{{
 " ---------------
@@ -285,8 +286,6 @@ let g:neocomplcache_auto_completion_start_length=1
 " SuperTab like snippets behavior.
 imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
-" space to end completion
-inoremap <expr><Space>  pumvisible() ? neocomplcache#smart_close_popup() : "\<Space>"
 
 " Enable omni completion.
 autocmd FileType c setlocal omnifunc=ccomplete#Complete
