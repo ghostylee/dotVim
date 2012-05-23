@@ -1,4 +1,3 @@
-
 #my vimrc used across windows and linux
 ## Install
 ### Linux
@@ -26,9 +25,9 @@ Launch `vim`, run `:BundleInstall`
 ```
 sudo apt-get install ctags
 ```
-####7. install font for fancy powerline here i use `yahei consolas hybrid for powerline` 
+####7. install font for fancy powerline here i use `yahei mono for powerline` 
 ```
-sudo cp ~/.vim/font/yaheiconsolashybrid_-Powerline.ttf /usr/share/fonts/truetype
+sudo cp ~/.vim/font/yahei_mono_gvim-Powerline.ttf /usr/share/fonts/truetype
 ```
 ### Windows
 ####1. backup your ~/.vim(if you got one)
@@ -57,5 +56,5 @@ Launch `vim`, run `:BundleInstall`
 #####1) download ctags from http://prdownloads.sourceforge.net/ctags/ctags58.zip
 #####2) unzip it to wherever you want
 #####3) add ctags.exe to PATH
-####7. install font for fancy powerline here i use `yahei consolas hybrid for powerline`
+####7. install font for fancy powerline here i use `yahei mono for powerline`
 just double click the yaheiconsolashybrid_-Powerline.ttf and click `install`
