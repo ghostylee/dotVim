@@ -55,7 +55,8 @@ if has('win32') || has('win64')
   set guifont=Consolas:h11
   set guifontwide=Yahei_Mono:h11:cGB2312
 else
-  set guifont=YaHei\ Mono\ 11
+  "set guifont=YaHei\ Mono\ 11
+  set guifont=YaHei\ Consolas\ hybrid\ for\ Powerline\ 11
 endif
 "}}}
 " UI {{{
@@ -185,35 +186,11 @@ let mapleader=","
 " Fixes common typos
 command W w
 command Q q
-map <F1> <Esc>
-imap <F1> <Esc>
-
-" Removes doc lookup binding because it's easy to fat finger
-nmap K k
-vmap K k
+command WQ wq
+command Wq wq
 
 " Make line completion easier
 imap <C-l> <C-x><C-l>
-
-" Easier Scrolling (think j/k with left hand)
-" All variations are mapped for now until I get used to one
-" C/M/D + d (page up)
-" C/M/D + f (page down)
-nmap <C-d> <C-b>
-if has("gui_macvim")
-  nmap <D-f> <C-f>
-  nmap <D-d> <C-b>
-else
-  nmap <M-f> <C-f>
-  nmap <M-d> <C-b>
-endif
-
-" Use ; for : in normal and visual mode, less keystrokes
-nnoremap ; :
-vnoremap ; :
-" double percentage sign in command mode is expanded
-" to directory of current file - http://vimcasts.org/e/14
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 " ---------------
 " Leader Commands
@@ -229,8 +206,6 @@ nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-j> :wincmd j<CR>
 nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-l> :wincmd l<CR>
-" Previous Window
-nmap <silent> <C-p> :wincmd p<CR>
 
 " ----------------------------------------
 " Auto Commands
