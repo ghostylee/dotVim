@@ -237,7 +237,11 @@ nnoremap al :TagbarToggle<cr>
 " ctags {{{
 " ---------------
 set tags=tags;,~/_vimtags  "; here let vim go to up folds until find one tags file
-nnoremap ec :!start ctags -R --fields=+l --c-kinds=+pl --c++-kinds=+pl .<cr>
+if has('win32') || has('win64')
+  nnoremap ec :!start ctags -R --fields=+l --c-kinds=+pl --c++-kinds=+pl .<cr>
+else
+  nnoremap ec :!ctags -R --fields=+l --c-kinds=+pl --c++-kinds=+pl .<cr>
+endif
 "}}}
 " easytags {{{
 " ---------------
