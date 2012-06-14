@@ -25,15 +25,21 @@ nmap <Leader>bc :BundleClean<CR>
 " ----------------------------------------
 " Color {{{
 " ---------------
+" EasyColour {{{
+" ---------------
+Bundle 'abudden/EasyColour'
+"}}}
 " jellybeans.vim colorscheme tweaks {{{
 " ---------------
 Bundle 'nanotech/jellybeans.vim'
 " Make cssAttrs (center, block, etc.) the same color as units
 hi! link cssAttr Constant
 "}}}
+" Theme{{{
 set t_Co=256
 set background=dark
-colorscheme jellybeans
+colorscheme jellybeans_thl
+"}}}
 "}}}
 " Backups {{{
 " ---------------
@@ -179,21 +185,29 @@ endif
 " ----------------------------------------
 " Bindings {{{
 " ----------------------------------------
-" Set leader to ,
+" Set leader to , {{{
 " Note: This line MUST come before any <leader> mappings
 let mapleader=","
-
-" Fixes common typos
+"}}}
+" Fixes common typos {{{
 command W w
 command Q q
 command WQ wq
 command Wq wq
-
-" Make line completion easier
+"}}}
+" Make line completion easier {{{
 imap <C-l> <C-x><C-l>
-
-" ---------------
-" Leader Commands
+"}}}
+" Show highlighting groups for current word {{{
+nmap <C-S-P> : call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+"}}}
+" Leader Commands {{{
 " ---------------
 
 " Toggle spelling mode with ,s
@@ -206,11 +220,9 @@ nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-j> :wincmd j<CR>
 nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-l> :wincmd l<CR>
-
+"}}}
+" Auto Commands {{{
 " ----------------------------------------
-" Auto Commands
-" ----------------------------------------
-
 if has("autocmd")
   " No formatting on o key newlines
   autocmd BufNewFile,BufEnter * set formatoptions-=o
@@ -225,6 +237,7 @@ if has("autocmd")
         \   exe "normal! g`\"" |
         \ endif
 endif
+"}}}
 "}}}
 " ----------------------------------------
 " Plugin Configuration {{{
@@ -243,15 +256,14 @@ else
   nnoremap ec :!ctags -R --fields=+l --c-kinds=+pl --c++-kinds=+pl .<cr>
 endif
 "}}}
-" easytags {{{
+" TagHighlight {{{
 " ---------------
-Bundle 'xolox/vim-easytags'
+Bundle 'abudden/TagHighlight'
+nnoremap ut :UpdateTypesFile <cr>
+"}}}
+" vim-shell {{{
+" ---------------
 Bundle 'xolox/vim-shell'
-let g:easytags_dynamic_files = 1  " allow easytags to load ./tags file
-let g:easytags_on_cursorhold = 0  " don't update tags on cursorhold
-nnoremap <silent><F4> :UpdateTags -R --c-kinds=+pl--c++-kinds=+pl --fields=+iaS --extra=+q .<CR>
-
-autocmd FileType c HighlightTags
 "}}}
 " Neocachecompl {{{
 " ---------------
@@ -417,6 +429,7 @@ Bundle 'Lokaltog/vim-easymotion'
 " colorv {{{
 " ---------------
 Bundle 'Rykka/colorv.vim'
+let g:colorv_has_python=0
 "}}}
 " quickfixsigns {{{
 " ---------------
