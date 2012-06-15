@@ -257,19 +257,22 @@ endif
 Bundle 'abudden/TagHighlight'
 nnoremap ut :UpdateTypesFile <cr>
 " colors for Taghighlight {{{
-hi Class guifg=purple guibg=NONE gui=NONE
-hi DefinedName guifg=Violet guibg=NONE gui=NONE
-hi Function guifg=#007777 guibg=NONE gui=NONE
-hi EnumerationValue guifg=#c000c0 guibg=NONE gui=NONE
-hi EnumerationName guifg=#FF22FF guibg=NONE gui=NONE
-hi Member guifg=DarkGrey guibg=NONE gui=NONE
-hi Structure guifg=#FF8080 guibg=NONE gui=NONE
-hi Type guifg=#FF8000 guibg=NONE gui=NONE
-hi Union guifg=Gray guibg=NONE gui=NONE
-hi GlobalVariable guifg=#888800 guibg=NONE gui=NONE
-hi LocalVariable guifg=#AAA14C guibg=NONE gui=NONE
-hi GlobalConstant guifg=#BBBB00 guibg=NONE gui=NONE
+hi Class guifg=#800080 guibg=NONE gui=NONE ctermfg=90 ctermbg=NONE cterm=NONE
+hi DefinedName guifg=#EE82EE guibg=NONE gui=NONE ctermfg=175 ctermbg=NONE cterm=NONE
+hi Function guifg=#007777 guibg=NONE gui=NONE ctermfg=30 ctermbg=NONE cterm=NONE
+hi EnumerationValue guifg=#C000C0 guibg=NONE gui=NONE ctermfg=164 ctermbg=NONE cterm=NONE
+hi EnumerationName guifg=#FF22FF guibg=NONE gui=NONE ctermfg=201 ctermbg=NONE cterm=NONE
+hi Member guifg=#A9A9A9 guibg=NONE gui=NONE ctermfg=145 ctermbg=NONE cterm=NONE
+hi Structure guifg=#FF8080 guibg=NONE gui=NONE ctermfg=210 ctermbg=NONE cterm=NONE
+hi Type guifg=#FF8000 guibg=NONE gui=NONE ctermfg=208 ctermbg=NONE cterm=NONE
+hi Union guifg=#808080 guibg=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+hi GlobalVariable guifg=#888800 guibg=NONE gui=NONE ctermfg=100 ctermbg=NONE cterm=NONE
+hi LocalVariable guifg=#AAA14C guibg=NONE gui=NONE ctermfg=143 ctermbg=NONE cterm=NONE
+hi GlobalConstant guifg=#BBBB00 guibg=NONE gui=NONE ctermfg=142 ctermbg=NONE cterm=NONE
 "}}}
+"}}}
+" Xterm-color-table {{{
+Bundle 'guns/xterm-color-table.vim'
 "}}}
 " vim-shell {{{
 " ---------------
