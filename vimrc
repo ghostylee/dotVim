@@ -25,10 +25,6 @@ nmap <Leader>bc :BundleClean<CR>
 " ----------------------------------------
 " Color {{{
 " ---------------
-" EasyColour {{{
-" ---------------
-Bundle 'abudden/EasyColour'
-"}}}
 " jellybeans.vim colorscheme tweaks {{{
 " ---------------
 Bundle 'nanotech/jellybeans.vim'
@@ -38,7 +34,7 @@ hi! link cssAttr Constant
 " Theme{{{
 set t_Co=256
 set background=dark
-colorscheme jellybeans_thl
+colorscheme jellybeans
 "}}}
 "}}}
 " Backups {{{
@@ -260,6 +256,20 @@ endif
 " ---------------
 Bundle 'abudden/TagHighlight'
 nnoremap ut :UpdateTypesFile <cr>
+" colors for Taghighlight {{{
+hi Class guifg=purple guibg=NONE gui=NONE
+hi DefinedName guifg=Violet guibg=NONE gui=NONE
+hi Function guifg=#007777 guibg=NONE gui=NONE
+hi EnumerationValue guifg=#c000c0 guibg=NONE gui=NONE
+hi EnumerationName guifg=#FF22FF guibg=NONE gui=NONE
+hi Member guifg=DarkGrey guibg=NONE gui=NONE
+hi Structure guifg=#FF8080 guibg=NONE gui=NONE
+hi Type guifg=#FF8000 guibg=NONE gui=NONE
+hi Union guifg=Gray guibg=NONE gui=NONE
+hi GlobalVariable guifg=#888800 guibg=NONE gui=NONE
+hi LocalVariable guifg=#AAA14C guibg=NONE gui=NONE
+hi GlobalConstant guifg=#BBBB00 guibg=NONE gui=NONE
+"}}}
 "}}}
 " vim-shell {{{
 " ---------------
