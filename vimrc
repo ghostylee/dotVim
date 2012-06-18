@@ -151,6 +151,8 @@ set foldlevel=0
 set foldlevelstart=0
 nnoremap <Space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 "}}}
+" Path setting
+set path=.,,
 "}}}
 " ----------------------------------------
 " Platform Specific Configuration {{{
@@ -250,6 +252,52 @@ if has('win32') || has('win64')
   nnoremap ec :!start ctags -R --fields=+l --c-kinds=+pl --c++-kinds=+pl .<cr>
 else
   nnoremap ec :!ctags -R --fields=+l --c-kinds=+pl --c++-kinds=+pl .<cr>
+endif
+"}}}
+" cscope {{{
+if has('cscope')
+  set cscopetag cscopeverbose
+
+  if has('quickfix')
+    set cscopequickfix=s-,c-,d-,i-,t-,e-
+  endif
+  set csto=0
+
+  " auto load cscope.out file
+  set nocsverb
+  if filereadable("cscope.out")
+    cs add cscope.out
+  elseif filereadable("../cscope.out")
+    cs add ../cscope.out
+  elseif filereadable("../../cscope.out")
+    cs add ../../cscope.out
+  elseif filereadable("../../../cscope.out")
+    cs add ../../../cscope.out
+  elseif filereadable("../../../../cscope.out")
+    cs add ../../../../cscope.out
+  elseif filereadable("../../../../../cscope.out")
+    cs add ../../../../../cscope.out
+  elseif filereadable("../../../../../../cscope.out")
+    cs add ../../../../../../cscope.out
+  endif
+  set csverb
+
+  " short command
+  cnoreabbrev csa cs add
+  cnoreabbrev csf cs find
+  cnoreabbrev csk cs kill
+  cnoreabbrev csr cs reset
+  cnoreabbrev css cs show
+  cnoreabbrev csh cs help
+
+  nmap <leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR>
+  nmap <leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>
+  nmap <leader>fc :cs find c <C-R>=expand("<cword>")<CR><CR>
+  nmap <leader>ft :cs find t <C-R>=expand("<cword>")<CR><CR>
+  nmap <leader>fe :cs find e <C-R>=expand("<cword>")<CR><CR>
+  nmap <leader>ff :cs find f <C-R>=expand("<cfile>")<CR><CR>
+  nmap <leader>fi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+  nmap <leader>fd :cs find d <C-R>=expand("<cword>")<CR><CR>
 endif
 "}}}
 " TagHighlight {{{
