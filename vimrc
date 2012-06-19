@@ -49,7 +49,7 @@ set encoding=utf-8
 set fileencodings=utf-8,chinese,latin-1
 set fileencoding=chinese
 set langmenu=zh_CN.UTF-8  " chinese menu
-set helplang=cn           " chinese helpdoc
+"set helplang=cn           " chinese helpdoc
 "}}}
 " Font {{{
 " ---------------
@@ -151,8 +151,9 @@ set foldlevel=0
 set foldlevelstart=0
 nnoremap <Space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 "}}}
-" Path setting
-set path=.,,
+" Path setting {{{
+set path+=;,include;
+"}}}
 "}}}
 " ----------------------------------------
 " Platform Specific Configuration {{{
@@ -236,6 +237,13 @@ if has("autocmd")
         \ endif
 endif
 "}}}
+" <s-k> to open help{{{
+set keywordprg=":help"
+"}}}
+" Quickfix Commands {{{
+nnoremap qo :copen<cr>
+nnoremap qp :cclose<cr>
+"}}}
 "}}}
 " ----------------------------------------
 " Plugin Configuration {{{
@@ -259,7 +267,7 @@ if has('cscope')
   set cscopetag cscopeverbose
 
   if has('quickfix')
-    set cscopequickfix=s-,c-,d-,i-,t-,e-
+    set cscopequickfix=s-,c-,d-,i-,t-,e-,g-,f-
   endif
   set csto=0
 
@@ -290,14 +298,14 @@ if has('cscope')
   cnoreabbrev css cs show
   cnoreabbrev csh cs help
 
-  nmap <leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR>
-  nmap <leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>
-  nmap <leader>fc :cs find c <C-R>=expand("<cword>")<CR><CR>
-  nmap <leader>ft :cs find t <C-R>=expand("<cword>")<CR><CR>
-  nmap <leader>fe :cs find e <C-R>=expand("<cword>")<CR><CR>
-  nmap <leader>ff :cs find f <C-R>=expand("<cfile>")<CR><CR>
-  nmap <leader>fi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-  nmap <leader>fd :cs find d <C-R>=expand("<cword>")<CR><CR>
+  nmap <leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+  nmap <leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+  nmap <leader>fc :cs find c <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+  nmap <leader>ft :cs find t <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+  nmap <leader>fe :cs find e <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+  nmap <leader>ff :cs find f <C-R>=expand("<cfile>")<CR><CR>:copen<CR>
+  nmap <leader>fi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:copen<CR>
+  nmap <leader>fd :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
 endif
 "}}}
 " TagHighlight {{{
@@ -446,26 +454,6 @@ let g:ctrlp_map = ''
 
 " Ensure max height isn't too large. (for performance)
 let g:ctrlp_max_height = 10
-
-" Conditional Mappings
-if has('unix')
-  let g:ctrlp_map = '<C-t>'
-else
-  let g:ctrlp_map = '<M-t>'
-endif
-
-" Leader Commands
-nnoremap <leader>t :CtrlPRoot<CR>
-nnoremap <leader>b :CtrlPBuffer<CR>
-
-" Always use CtrlP for most recently used files and relative dierctory.
-if has('unix')
-  nnoremap <silent><C-u> :CtrlPCurFile<CR>
-  nnoremap <silent><C-m> :CtrlPMRUFiles<CR>
-else
-  nnoremap <silent><M-u> :CtrlPCurFile<CR>
-  nnoremap <silent><M-m> :CtrlPMRUFiles<CR>
-endif
 
 " Also map leader commands
 nnoremap <leader>u :CtrlPCurFile<CR>
