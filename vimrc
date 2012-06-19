@@ -36,6 +36,8 @@ set t_Co=256
 set background=dark
 colorscheme jellybeans
 "}}}
+set cursorcolumn
+set cursorline
 "}}}
 " Backups {{{
 " ---------------
@@ -241,7 +243,7 @@ endif
 set keywordprg=":help"
 "}}}
 " Quickfix Commands {{{
-nnoremap qo :copen<cr>
+nnoremap qo :botright copen<cr>
 nnoremap qp :cclose<cr>
 "}}}
 "}}}
@@ -298,14 +300,14 @@ if has('cscope')
   cnoreabbrev css cs show
   cnoreabbrev csh cs help
 
-  nmap <leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-  nmap <leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-  nmap <leader>fc :cs find c <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-  nmap <leader>ft :cs find t <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-  nmap <leader>fe :cs find e <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-  nmap <leader>ff :cs find f <C-R>=expand("<cfile>")<CR><CR>:copen<CR>
-  nmap <leader>fi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:copen<CR>
-  nmap <leader>fd :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+  nmap fs :cs find s <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
+  nmap fg :cs find g <C-R>=expand("<cword>")<CR><CR>
+  nmap fc :cs find c <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
+  nmap ft :cs find t <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
+  nmap fe :cs find e <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
+  nmap ff :cs find f <C-R>=expand("<cfile>")<CR><CR>:botright copen<CR>
+  nmap fi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:botright copen<CR>
+  nmap fd :cs find d <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
 endif
 "}}}
 " TagHighlight {{{
@@ -325,6 +327,7 @@ hi Union guifg=#808080 guibg=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
 hi GlobalVariable guifg=#888800 guibg=NONE gui=NONE ctermfg=100 ctermbg=NONE cterm=NONE
 hi LocalVariable guifg=#AAA14C guibg=NONE gui=NONE ctermfg=143 ctermbg=NONE cterm=NONE
 hi GlobalConstant guifg=#BBBB00 guibg=NONE gui=NONE ctermfg=142 ctermbg=NONE cterm=NONE
+hi cPreCondit guifg=#00AF00 guibg=NONE gui=NONE ctermfg=34 ctermbg=NONE cterm=NONE
 "}}}
 "}}}
 " Xterm-color-table {{{
