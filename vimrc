@@ -152,7 +152,7 @@ set foldlevelstart=0
 nnoremap <Space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 "}}}
 " Path setting {{{
-set path+=;,include;
+set path+=;,include;inc;
 "}}}
 "}}}
 " ----------------------------------------
