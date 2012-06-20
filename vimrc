@@ -36,8 +36,6 @@ set t_Co=256
 set background=dark
 colorscheme jellybeans
 "}}}
-set cursorcolumn
-set cursorline
 "}}}
 " Backups {{{
 " ---------------
@@ -130,6 +128,14 @@ set matchtime=2 " How many tenths of a second to blink
 set list        " show tab and trail
 set listchars=tab:→.,trail:-
 
+set cursorcolumn
+set cursorline
+
+if &term=="xterm"
+  au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+  au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+  au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+endif
 "}}}
 " Sounds {{{
 " ---------------
