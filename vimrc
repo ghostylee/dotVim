@@ -254,6 +254,8 @@ set keywordprg=":help"
 " Quickfix Commands {{{
 nnoremap qo :botright copen<cr>
 nnoremap qp :cclose<cr>
+nnoremap <C-Up> :cprev<cr>
+nnoremap <C-Down> :cnext<cr>
 "}}}
 "}}}
 " ----------------------------------------
