@@ -126,7 +126,10 @@ set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,.sass-cache,
 set showmatch   " Show matching brackets.
 set matchtime=2 " How many tenths of a second to blink
 set list        " show tab and trail
-set listchars=tab:→.,trail:-
+set listchars=tab:▸\ ,trail:¬
+"Invisible character colors
+highlight NonText guifg=#444444 guibg=NONE gui=NONE ctermfg=238 ctermbg=NONE cterm=NONE
+highlight SpecialKey guifg=#444444 guibg=NONE gui=NONE ctermfg=238 ctermbg=NONE cterm=NONE
 
 set cursorcolumn
 set cursorline
