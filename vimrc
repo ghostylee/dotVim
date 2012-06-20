@@ -252,8 +252,8 @@ endif
 set keywordprg=":help"
 "}}}
 " Quickfix Commands {{{
-nnoremap qo :botright copen<cr>
-nnoremap qp :cclose<cr>
+nnoremap ao :botright copen<cr>
+nnoremap ap :cclose<cr>
 nnoremap <C-Up> :cprev<cr>
 nnoremap <C-Down> :cnext<cr>
 "}}}
@@ -510,5 +510,9 @@ Bundle 'scrooloose/nerdcommenter'
 " ---------------
 Bundle 'Raimondi/delimitMate'
 "}}}
+" Gundo {{{
+" ---------------
+Bundle 'sjl/gundo.vim'
+nnoremap au :GundoToggle<CR>
 "}}}
-
+"}}}
