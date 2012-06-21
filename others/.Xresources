@@ -1,0 +1,88 @@
+! urxvt configure{{{
+! General{{{
+!urxvt*termName                : rxvt-256color
+urxvt*loginShell               : true
+urxvt*secondaryScroll          : true
+URxvt.cursorBlink              : True
+urxvt*saveLines                : 65535
+urxvt*urgentOnBell             : true
+urxvt*preeditType              : Root
+urxvt*inputMethod              : fcitx
+URxvt.borderLess               : False
+!urxvt*override-redirect       : false
+!urxvt*borderLess              : false
+!urxvt*internalBorder          : 0
+!urxvt*externalBorder          : 0
+!}}}
+! Extensions{{{
+urxvt*perl-lib                 : /usr/lib/urxvt/perl/
+urxvt*perl-ext-common          : default,matcher,searchable-scrollback
+urxvt*urlLauncher              : chromium
+urxvt*matcher.button           : 1
+!  - catch ugly URLs
+!}}}
+! Appearance{{{
+!  - font{{{
+!  - use xft for drawing fonts
+Xft.dpi                        : 96
+!URxvt.font                    : xft                                   : Yahei Mono for Powerline : size=9  : antialias=true
+!URxvt.boldfont                : xft                                   : Yahei Mono for Powerline : size=9  : antialias=true
+URxvt*font                     : xft:Monaco for Powerline:regular:size=10
+URxvt*imFont                   : xft:Monaco for Powerline:regular:size=10
+URxvt*boldFont                 : xft:Monaco for Powerline:bold:size=10
+URxvt*italicFont               : xft:Monaco for Powerline:italic:size=10
+URxvt*boldItalicFont           : xft:Monaco for Powerline:bold:italic: size=10
+!}}}
+!  - cursor{{{
+urxvt*cursorColor              : #DCDCCC
+!}}}
+!  - pseudo transparency{{{
+!urxvt*shading                 : 50
+!urxvt*transparent             : true
+!
+!}}}
+!  - color scheme{{{
+urxvt*depth                    : 32
+urxvt.background               : [90]#000000
+urxvt.foreground               : #EBEBFF
+
+urxvt*colorBD                  : Gray95
+urxvt*colorUL                  : Green
+! black + red
+!urxvt*color0                  : #3f3f3f
+urxvt*color0                   : #000000
+urxvt*color1                   : #e01010
+! green + yellow
+urxvt*color2                   : #00AA00
+urxvt*color3                   : #FFFF00
+! blue + purple
+urxvt*color4                   : #112037
+urxvt*color5                   : #A020F0
+! cyan + white
+urxvt*color6                   : #5B5BC7
+urxvt*color7                   : #fefefe
+! bright-black + bright-red
+urxvt*color8                   : #6a6a6a
+urxvt*color9                   : #FF5555
+! bright-green + bright-yellow
+urxvt*color10                  : #90EE90
+urxvt*color11                  : #ffff2f
+! bright-blue + bright-purple
+urxvt*color12                  : #5B5BC7
+urxvt*color13                  : #e628ba
+! bright-cyan + bright-white
+urxvt*color14                  : #7D7DFB
+urxvt*color15                  : #ffffff
+!}}}
+!  - scrollBar{{{
+urxvt*scrollBar                : true
+URxvt.scrollBar_right          : true
+URxvt.scrollBar_floating       : false
+URxvt.scrollstyle              : plain
+URxvt.mouseWheelScrollPage     : true
+URxvt.scrollTtyOutput          : false
+URxvt.scrollWithBuffer         : true
+URxvt.scrollTtyKeypress        : true
+!}}}
+!}}}
+!}}}
