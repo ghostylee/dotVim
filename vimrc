@@ -135,9 +135,14 @@ set cursorcolumn
 set cursorline
 
 if &term=="xterm"
+  " change cursor shape in gnome-terminal
   au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
   au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
   au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+elseif &term=="rxvt-unicode-256color"
+  " change cursor color in urxvt
+  let &t_SI = "\<Esc>]12;red\x7"
+  let &t_EI = "\<Esc>]12;grey80\x7"
 endif
 "}}}
 " Sounds {{{
