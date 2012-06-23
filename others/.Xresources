@@ -1,4 +1,4 @@
-! urxvt configure{{{
+! urxvt configuration{{{
 ! General{{{
 !urxvt*termName                : rxvt-256color
 urxvt*loginShell               : true
@@ -27,18 +27,19 @@ urxvt*matcher.button           : 1
 Xft.dpi                        : 96
 !URxvt.font                    : xft                                   : Yahei Mono for Powerline : size=9  : antialias=true
 !URxvt.boldfont                : xft                                   : Yahei Mono for Powerline : size=9  : antialias=true
-URxvt*font                     : xft:Monaco for Powerline:regular:size=10
-URxvt*imFont                   : xft:Monaco for Powerline:regular:size=10
-URxvt*boldFont                 : xft:Monaco for Powerline:bold:size=10
-URxvt*italicFont               : xft:Monaco for Powerline:italic:size=10
-URxvt*boldItalicFont           : xft:Monaco for Powerline:bold:italic: size=10
+URxvt*font                     : xft:WenQuanYi Zen Hei Mono:regular:size=12:antialias=true
+URxvt*boldfont                 : xft:WenQuanYi Zen Hei Mono:bold:size=12:antialias=true
+!URxvt*imFont                   : xft:consolas:regular:size=10
+!URxvt*boldFont                 : xft:consolas:bold:size=10
+!URxvt*italicFont               : xft:consolas:italic:size=10
+!URxvt*boldItalicFont           : xft:consolas:bold:italic: size=10
 !}}}
 !  - cursor{{{
 urxvt*cursorColor              : #DCDCCC
 !}}}
 !  - pseudo transparency{{{
-!urxvt*shading                 : 50
-!urxvt*transparent             : true
+urxvt*shading                 : 30
+urxvt*transparent             : true
 !
 !}}}
 !  - color scheme{{{
@@ -85,4 +86,29 @@ URxvt.scrollWithBuffer         : true
 URxvt.scrollTtyKeypress        : true
 !}}}
 !}}}
+!}}}
+! xterm configuration{{{
+XTerm*locale                     : true
+XTerm*utf8Title                  : true
+XTerm*fontMenu*fontdefault*Label : Default
+XTerm*faceName                   : DejaVu Sans Mono for Powerline : antialias=True : pixelsize=15
+XTerm*faceNameDoublesize         : WenQuanYi Zen Hei Mono : pixelsize=15
+XTerm*faceSize                   : 12
+XTerm*faceSize1                  : 12
+XTerm*faceSize2                  : 12
+XTerm*faceSize3                  : 12
+XTerm*faceSize4                  : 12
+XTerm*faceSize5                  : 12
+XTerm*faceSize6                  : 12
+XTerm*cjkWidth                   : false
+XTerm*background                 : black
+XTerm*foreground                 : green
+XTerm*scrollBar                  : true
+XTerm*rightScrollBar             : true
+XTerm*jumpScroll                 : true
+XTerm*SaveLines                  : 3000
+XTerm*loginshell                 : true
+XTerm*cursorBlink                : true
+XTerm*colorUL                    : yellow
+XTerm*colorBD                    : white
 !}}}
