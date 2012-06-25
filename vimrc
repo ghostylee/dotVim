@@ -246,6 +246,17 @@ if has("autocmd")
         \ if line("'\"") > 1 && line ("'\"") <= line("$") |
         \   exe "normal! g`\"" |
         \ endif
+  " vim -b : edit binary using xxd-format!
+  augroup Binary
+    "au!
+    "au BufReadPre  *.bin let &bin=1
+    "au BufReadPost *.bin if &bin | %!xxd
+    "au BufReadPost *.bin set ft=xxd | endif
+    "au BufWritePre *.bin if &bin | %!xxd -r
+    "au BufWritePre *.bin endif
+    "au BufWritePost *.bin if &bin | %!xxd
+    "au BufWritePost *.bin set nomod | endif
+  augroup END
 endif
 "}}}
 " <s-k> to open help{{{
@@ -335,10 +346,10 @@ hi Member guifg=#A9A9A9 guibg=NONE gui=NONE ctermfg=145 ctermbg=NONE cterm=NONE
 hi Structure guifg=#FF8080 guibg=NONE gui=NONE ctermfg=210 ctermbg=NONE cterm=NONE
 hi Type guifg=#FF8000 guibg=NONE gui=NONE ctermfg=208 ctermbg=NONE cterm=NONE
 hi Union guifg=#808080 guibg=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
-hi GlobalVariable guifg=#888800 guibg=NONE gui=NONE ctermfg=100 ctermbg=NONE cterm=NONE
+hi GlobalVariable guifg=#df5f87 guibg=NONE gui=NONE ctermfg=168 ctermbg=NONE cterm=NONE
 hi LocalVariable guifg=#AAA14C guibg=NONE gui=NONE ctermfg=143 ctermbg=NONE cterm=NONE
-hi GlobalConstant guifg=#BBBB00 guibg=NONE gui=NONE ctermfg=142 ctermbg=NONE cterm=NONE
-hi cPreCondit guifg=#00AF00 guibg=NONE gui=NONE ctermfg=34 ctermbg=NONE cterm=NONE
+hi GlobalConstant guifg=#df5f87 guibg=NONE gui=NONE ctermfg=168 ctermbg=NONE cterm=NONE
+"hi cPreCondit guifg=#00AF00 guibg=NONE gui=NONE ctermfg=34 ctermbg=NONE cterm=NONE
 "}}}
 "}}}
 " Xterm-color-table {{{
