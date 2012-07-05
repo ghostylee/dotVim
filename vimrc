@@ -133,7 +133,7 @@ set listchars=tab:▸\ ,trail:¬
 highlight NonText guifg=#444444 guibg=NONE gui=NONE ctermfg=238 ctermbg=NONE cterm=NONE
 highlight SpecialKey guifg=#444444 guibg=NONE gui=NONE ctermfg=238 ctermbg=NONE cterm=NONE
 
-set cursorcolumn
+"set cursorcolumn
 set cursorline
 
 if &term=="xterm"
@@ -288,6 +288,7 @@ nnoremap <C-Down> :cnext<cr>
 " Tagbar{{{
 " ---------------
 Bundle 'majutsushi/tagbar'
+let g:tagbar_width = 30
 nnoremap al :TagbarToggle<cr>
 "}}}
 " ctags {{{
@@ -362,7 +363,8 @@ hi Union guifg=#808080 guibg=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
 hi GlobalVariable guifg=#df5f87 guibg=NONE gui=NONE ctermfg=168 ctermbg=NONE cterm=NONE
 hi LocalVariable guifg=#AAA14C guibg=NONE gui=NONE ctermfg=143 ctermbg=NONE cterm=NONE
 hi GlobalConstant guifg=#df5f87 guibg=NONE gui=NONE ctermfg=168 ctermbg=NONE cterm=NONE
-"hi cPreCondit guifg=#00AF00 guibg=NONE gui=NONE ctermfg=34 ctermbg=NONE cterm=NONE
+hi cPreCondit guifg=#005f00 guibg=NONE gui=NONE ctermfg=22 ctermbg=NONE cterm=NONE
+hi cTODO guifg=#ff0000 guibg=#dfff00 gui=NONE ctermfg=196 ctermbg=190 cterm=NONE
 "}}}
 "}}}
 " Xterm-color-table {{{
