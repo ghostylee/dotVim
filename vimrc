@@ -54,7 +54,7 @@ set langmenu=zh_CN.UTF-8  " chinese menu
 " Font {{{
 " ---------------
 if has('win32') || has('win64')
-  set guifont=Consolas:h11
+  set guifont=DejaVu_Sans_Mono_for_Powerline:h11
   set guifontwide=Yahei_Mono:h11:cGB2312
 else
   "set guifont=YaHei\ Mono\ 11
@@ -505,7 +505,7 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 Bundle 'Lokaltog/vim-powerline'
 " Keep ^B from showing on Windows in Powerline
 if has('win32') || has('win64')
-  let g:Powerline_symbols = 'compatible'
+  let g:Powerline_symbols = 'fancy'
 elseif has('unix')
   let g:Powerline_symbols = 'fancy'
 endif
