@@ -310,24 +310,33 @@ if has('cscope')
   set csto=0
 
   " auto load cscope.out file
-  set nocsverb
-  if filereadable("cscope.out")
-    cs add cscope.out
-  elseif filereadable("../cscope.out")
-    cs add ../cscope.out
-  elseif filereadable("../../cscope.out")
-    cs add ../../cscope.out
-  elseif filereadable("../../../cscope.out")
-    cs add ../../../cscope.out
-  elseif filereadable("../../../../cscope.out")
-    cs add ../../../../cscope.out
-  elseif filereadable("../../../../../cscope.out")
-    cs add ../../../../../cscope.out
-  elseif filereadable("../../../../../../cscope.out")
-    cs add ../../../../../../cscope.out
+  "set nocsverb
+  "if filereadable("cscope.out")
+    "cs add cscope.out
+  "elseif filereadable("../cscope.out")
+    "cs add ../cscope.out
+  "elseif filereadable("../../cscope.out")
+    "cs add ../../cscope.out
+  "elseif filereadable("../../../cscope.out")
+    "cs add ../../../cscope.out
+  "elseif filereadable("../../../../cscope.out")
+    "cs add ../../../../cscope.out
+  "elseif filereadable("../../../../../cscope.out")
+    "cs add ../../../../../cscope.out
+  "elseif filereadable("../../../../../../cscope.out")
+    "cs add ../../../../../../cscope.out
+  "endif
+  "set csverb
+function! LoadCscope()
+  let db = findfile("cscope.out", ".;")
+  if (!empty(db))
+    let path = strpart(db, 0, match(db, "/cscope.out$"))
+    set nocscopeverbose " suppress 'duplicate connection' error
+    exe "cs add " . db . " " . path
+    set cscopeverbose
   endif
-  set csverb
-
+endfunction
+au BufEnter /* call LoadCscope()
   " short command
   cnoreabbrev csa cs add
   cnoreabbrev csf cs find
