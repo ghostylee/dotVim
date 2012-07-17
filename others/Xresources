@@ -27,8 +27,8 @@ urxvt*matcher.button           : 1
 Xft.dpi                        : 96
 !URxvt.font                    : xft                                   : Yahei Mono for Powerline : size=9  : antialias=true
 !URxvt.boldfont                : xft                                   : Yahei Mono for Powerline : size=9  : antialias=true
-URxvt*font                     : xft:WenQuanYi Zen Hei Mono:regular:size=12:antialias=true
-URxvt*boldfont                 : xft:WenQuanYi Zen Hei Mono:bold:size=12:antialias=true
+URxvt*font                     : xft:DejaVu Sans Mono for Powerline:size=11:antialias=true
+!URxvt*boldfont                 : xft:WenQuanYi Zen Hei Mono:bold:size=12:antialias=true
 !URxvt*imFont                   : xft:consolas:regular:size=10
 !URxvt*boldFont                 : xft:consolas:bold:size=10
 !URxvt*italicFont               : xft:consolas:italic:size=10
@@ -39,7 +39,7 @@ urxvt*cursorColor              : #DCDCCC
 !}}}
 !  - pseudo transparency{{{
 urxvt*shading                 : 30
-urxvt*transparent             : false
+urxvt*transparent             : true
 !
 !}}}
 !  - color scheme{{{

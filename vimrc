@@ -320,7 +320,8 @@ if has('cscope')
       set cscopeverbose
     endif
   endfunction
-  au BufEnter /* call LoadCscope()
+  "au BufEnter /* call LoadCscope()
+autocmd FileType c call LoadCscope()
   " short command
   cnoreabbrev csa cs add
   cnoreabbrev csf cs find
