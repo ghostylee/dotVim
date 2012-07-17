@@ -39,7 +39,7 @@ urxvt*cursorColor              : #DCDCCC
 !}}}
 !  - pseudo transparency{{{
 urxvt*shading                 : 30
-urxvt*transparent             : true
+urxvt*transparent             : false
 !
 !}}}
 !  - color scheme{{{
