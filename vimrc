@@ -217,7 +217,13 @@ command W w
 command Q q
 command WQ wq
 command Wq wq
+" }}}
+
+" use ; for : {{{
+nnoremap ; :
+vnoremap ; :
 "}}}
+
 " Make line completion easier {{{
 imap <C-l> <C-x><C-l>
 "}}}
