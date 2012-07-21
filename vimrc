@@ -33,7 +33,6 @@ hi! link cssAttr Constant
 "}}}
 " Theme{{{
 set t_Co=256
-set background=dark
 colorscheme jellybeans
 "}}}
 "}}}
@@ -542,3 +541,6 @@ Bundle 'sjl/gundo.vim'
 nnoremap au :GundoToggle<CR>
 "}}}
 "}}}
+
+" transparent bg in vim
+hi Normal ctermbg=NONE
