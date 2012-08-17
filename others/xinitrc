@@ -1,13 +1,10 @@
+#!/bin/sh
 export XMODIFIERS="@im=ibus"
 export XIM=ibus
 export XIM_PROGRAM=ibus
 export GTK_IM_MODULE="ibus"
 export QT_IM_MODULE="xim"
-ibus-daemon -d -x
-xcompmgr &
-#random wallpaper
-#while true;
-#do
-#  awsetbg -r <path/to/the/directory/of/your/wallpapers>
-#  sleep 15m
-#done &
+ibus-daemon -d -x -r -n awesome
+xmodmap ~/.Xmodmap
+nm-applet &
+exec /usr/bin/awesome
