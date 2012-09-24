@@ -103,10 +103,10 @@ set iskeyword+=$,@     " Add extra characters that are valid parts of variables
 "}}}
 " Text Format {{{
 " ---------------
-set tabstop=2
+set tabstop=4
 set backspace=2   " Delete everything with backspace
-set shiftwidth=2  " Tabs under smart indent
-set softtabstop=2 " backspace can delete 2 space a time
+set shiftwidth=4  " Tabs under smart indent
+set softtabstop=4 " backspace can delete 2 space a time
 set cindent
 set cinoptions={0,1s,t0,n-2,p2s,(03s,=.5s,1s:1s
 set autoindent
@@ -439,7 +439,9 @@ nnoremap <leader>e :NERDTreeToggle<CR>
 " Indent Guides {{{
 " ---------------
 Bundle 'mutewinter/vim-indent-guides'
-let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level           = 2
+let g:indent_guides_guide_size            = 1
 "}}}
 " Session {{{
 " ---------------
