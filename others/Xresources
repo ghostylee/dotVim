@@ -80,7 +80,7 @@ urxvt*scrollBar                : true
 URxvt.scrollBar_right          : true
 URxvt.scrollBar_floating       : false
 URxvt.scrollstyle              : plain
-URxvt.mouseWheelScrollPage     : true
+URxvt.mouseWheelScrollPage     : false
 URxvt.scrollTtyOutput          : false
 URxvt.scrollWithBuffer         : true
 URxvt.scrollTtyKeypress        : true
@@ -93,13 +93,13 @@ XTerm*utf8Title                  : true
 XTerm*fontMenu*fontdefault*Label : Default
 XTerm*faceName                   : DejaVu Sans Mono for Powerline                      : antialias=True : pixelsize=15
 XTerm*faceNameDoublesize         : WenQuanYi Zen Hei Mono                              : pixelsize=15
-XTerm*faceSize                   : 11
-XTerm*faceSize1                  : 11
-XTerm*faceSize2                  : 11
-XTerm*faceSize3                  : 11
-XTerm*faceSize4                  : 11
-XTerm*faceSize5                  : 11
-XTerm*faceSize6                  : 11
+XTerm*faceSize                   : 10
+XTerm*faceSize1                  : 10
+XTerm*faceSize2                  : 10
+XTerm*faceSize3                  : 10
+XTerm*faceSize4                  : 10
+XTerm*faceSize5                  : 10
+XTerm*faceSize6                  : 10
 XTerm*cjkWidth                   : false
 XTerm*background                 : black
 XTerm*foreground                 : gray
