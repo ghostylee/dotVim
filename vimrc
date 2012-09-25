@@ -549,6 +549,20 @@ Bundle 'sjl/gundo.vim'
 nnoremap au :GundoToggle<CR>
 "}}}
 "}}}
-
+" Syntax  {{{
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tsaleh/vim-tmux'
+Bundle 'Puppet-Syntax-Highlighting'
+Bundle 'JSON.vim'
+Bundle 'tpope/vim-cucumber'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-markdown'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'vitaly/vim-syntastic-coffee'
+Bundle 'vim-scripts/jade.vim'
+Bundle 'wavded/vim-stylus'
+Bundle 'VimClojure'
+Bundle 'bbommarito/vim-slim'
+"}}}
 " transparent bg in vim
 hi Normal ctermbg=NONE
