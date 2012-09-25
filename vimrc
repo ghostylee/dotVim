@@ -294,7 +294,7 @@ nnoremap <C-Down> :cnext<cr>
 " ---------------
 Bundle 'majutsushi/tagbar'
 let g:tagbar_width = 30
-nnoremap al :TagbarToggle<cr>
+nnoremap <leader>t :TagbarToggle<cr>
 "}}}
 " ctags {{{
 " ---------------
@@ -452,14 +452,6 @@ Bundle 'xolox/vim-session'
 let g:session_autosave=0
 let g:session_autoload=0
 nnoremap <leader>os :OpenSession<CR>
-"}}}
-" SpeedDating {{{
-" ---------------
-Bundle 'tpope/vim-speeddating'
-let g:speeddating_no_mappings=1 " Remove default mappings (C-a etc.)
-nmap <silent><leader>dm <Plug>SpeedDatingDown
-nmap <silent><leader>dp <Plug>SpeedDatingUp
-nmap <silent><leader>dn <Plug>SpeedDatingNowUTC
 "}}}
 " Tabular {{{
 " ---------------
