@@ -5,9 +5,4 @@ export XIM_PROGRAM=ibus
 export GTK_IM_MODULE="ibus"
 export QT_IM_MODULE="xim"
 ibus-daemon -d -x -r -n awesome
-<<<<<<< HEAD
-xmodmap ~/.Xmodmap
-nm-applet &
-=======
->>>>>>> 296246606eea81a0165a84d311ac0ac41b247d87
 exec /usr/bin/awesome
