@@ -283,8 +283,8 @@ set keywordprg=":help"
 " Quickfix Commands {{{
 nnoremap ao :botright copen<cr>
 nnoremap ap :cclose<cr>
-nnoremap <C-Up> :cprev<cr>
-nnoremap <C-Down> :cnext<cr>
+nnoremap [q :cprev<cr>
+nnoremap ]q :cnext<cr>
 "}}}
 "}}}
 " ----------------------------------------
