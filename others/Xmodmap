@@ -1,3 +1,4 @@
-! map Caps lock to Esc
+! map Caps to Ctrl
+keycode 66 = Control_L
 clear Lock
-keycode 0x42 = Escape
+add Control = Control_L
