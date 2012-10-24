@@ -434,6 +434,7 @@ nnoremap sc :SyntasticCheck<cr>
 " NERDTree {{{
 " ---------------
 Bundle 'scrooloose/nerdtree'
+let g:NERDTreeDirArrows=0
 nnoremap <leader>e :NERDTreeToggle<CR>
 "}}}
 " Indent Guides {{{
