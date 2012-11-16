@@ -550,6 +550,7 @@ Bundle 'sjl/gundo.vim'
 nnoremap au :GundoToggle<CR>
 "}}}
 "}}}
+" ----------------------------------------
 " Syntax  {{{
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tsaleh/vim-tmux'
@@ -564,6 +565,10 @@ Bundle 'vim-scripts/jade.vim'
 Bundle 'wavded/vim-stylus'
 Bundle 'VimClojure'
 Bundle 'bbommarito/vim-slim'
+"}}}
+" ----------------------------------------
+" Python Special  {{{
+au BufRead,BufNewFile *.py set noexpandtab
 "}}}
 " transparent bg in vim
 hi Normal ctermbg=NONE
