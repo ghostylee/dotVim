@@ -53,13 +53,13 @@ set langmenu=zh_CN.UTF-8  " chinese menu
 " Font {{{
 " ---------------
 if has('win32') || has('win64')
-  set guifont=DejaVu_Sans_Mono_for_Powerline:h11
-  set guifontwide=Yahei_Mono:h11:cGB2312
+  set guifont=DejaVu_Sans_Mono_for_Powerline:h10
+  set guifontwide=Yahei_Mono:h10:cGB2312
 else
   "set guifont=YaHei\ Mono\ 11
   "set guifont=YaHei\ Consolas\ hybrid\ for\ Powerline\ 11
-  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
-  set guifontwide=WenQuanYi\ Zen\ Hei\ Mono\ 11
+  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
+  set guifontwide=WenQuanYi\ Zen\ Hei\ Mono\ 10
 endif
 "}}}
 " UI {{{
