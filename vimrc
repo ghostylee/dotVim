@@ -326,7 +326,7 @@ if has('cscope')
     endif
   endfunction
   "au BufEnter /* call LoadCscope()
-autocmd FileType c call LoadCscope()
+autocmd FileType c,cpp call LoadCscope()
   " short command
   cnoreabbrev csa cs add
   cnoreabbrev csf cs find
