@@ -1,0 +1,30 @@
+[user]
+    email   = Song.Li@honeywell.com
+    name    = li song
+    editor  = vim
+[color]
+    diff         = always
+    status       = always
+    branch       = always
+    interactive  = always
+    ui           = always
+[alias]
+    add        = add -v
+    amend      = commit --amend -a
+    br         = branch
+    co         = checkout
+    ds         = diff --staged
+    di         = diff
+    fetchall   = fetch -v --all
+    log-fancy  = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset' --abbrev-commit --date=relative
+    log-me     = log --author=Davis --pretty=format:'%h %cd %s' --date=short
+    log-nice   = log --graph --decorate --pretty=oneline --abbrev-commit
+    panic      = !tar cvf ../git_panic.tar *
+    st         = status
+    wdiff      = diff --word-diff=plain
+    rb         = rebase
+    master     = checkout master
+    x          = commit -m
+    xa         = commit -a -m
+[svn]
+    pushmergeinfo = true
