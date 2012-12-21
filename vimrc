@@ -173,6 +173,8 @@ set foldmethod=marker
 set foldlevel=0
 set foldlevelstart=0
 nnoremap <Space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+let g:xml_syntax_folding = 1
+autocmd FileType xml set foldmethod=syntax
 "}}}
 " Path setting {{{
 set path+=;,include;inc;
@@ -566,6 +568,7 @@ Bundle 'wavded/vim-stylus'
 Bundle 'VimClojure'
 Bundle 'bbommarito/vim-slim'
 Bundle 'skammer/vim-css-color'
+Bundle 'xml.vim'
 "}}}
 " ----------------------------------------
 " transparent bg in vim
