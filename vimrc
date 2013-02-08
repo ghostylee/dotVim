@@ -116,8 +116,9 @@ set expandtab
 "}}}
 " Searching {{{
 " ---------------
-set ignorecase " Case insensitive search
-set smartcase  " Non-case sensitive search
+set ignorecase
+set smartcase
+set infercase
 set incsearch
 set hlsearch
 set wildignore+=*.o,*.obj,*.exe,*.so,*.dll,*.pyc,.svn,.hg,.bzr,.git,.sass-cache,*.class
@@ -375,62 +376,115 @@ Bundle 'guns/xterm-color-table.vim'
 " ---------------
 Bundle 'xolox/vim-shell'
 "}}}
+" vimproc {{{
+" ---------------
+Bundle 'Shougo/vimproc'
+"}}}
+" vimshell {{{
+" ---------------
+Bundle 'Shougo/vimshell'
+"}}}
 " Neocachecompl {{{
 " ---------------
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neocomplcache-snippets-complete'
+"Bundle 'Shougo/neocomplcache'
+"Bundle 'Shougo/neosnippet'
 let g:neocomplcache_enable_at_startup=1
-let g:neocomplcache_enable_auto_select=0 "Select the first entry automatically
-let g:neocomplcache_enable_cursor_hold_i=1
-let g:neocomplcache_cursor_hold_i_time=300
-let g:neocomplcache_auto_completion_start_length=1
+let g:neocomplcache_manual_completion_start_length=0
+let g:neocomplcache_disable_auto_complete=0
+let g:neocomplcache_enable_auto_select=1 "Select the first entry automatically
+let g:neocomplcache_lock_iminsert=1
+let g:neocomplcache_auto_completion_start_length=2
 
 " SuperTab like snippets behavior.
-imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<TAB>"
+
+"inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+    "return neocomplcache#smart_close_popup() . "\<CR>"
+    " For no inserting <CR> key.
+    return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+endfunction
 
 " Enable omni completion.
-autocmd FileType c setlocal omnifunc=ccomplete#Complete
+autocmd FileType c,cpp setlocal omnifunc=ccomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-" Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+"}}}
+" SuperTab {{{
+" ---------------
+"Bundle 'ervandew/supertab'
+"}}}
+" clang_complete {{{
+" ---------------
+Bundle 'Rip-Rip/clang_complete'
+" Clang Complete Settings
+" g:clang_user_options set at vimprj section
+let g:clang_use_library=1
+let g:clang_complete_copen=1
+let g:clang_complete_macros=1
+let g:clang_complete_patterns=0
+" Avoids lame path cache generation and other unknown sources for includes 
+let g:clang_memory_percent=70
 
-" Required to make neocomplcache_cursor_hold_i_time work
-" See https://github.com/Shougo/neocomplcache/issues/140
-let s:update_time_save = &updatetime
-autocmd InsertEnter * call s:on_insert_enter()
+set conceallevel=2
+set concealcursor=vin
+let g:clang_snippets=1
+let g:clang_conceal_snippets=1
+" The single one that works with clang_complete
+let g:clang_snippets_engine='clang_complete'
 
-function! s:on_insert_enter()
-  if &updatetime > g:neocomplcache_cursor_hold_i_time
-    let s:update_time_save = &updatetime
-    let &updatetime = g:neocomplcache_cursor_hold_i_time
-  endif
-endfunction
+" Complete options (disable preview scratch window, longest removed to aways
+" show menu)
+set completeopt=menu,menuone
 
-autocmd InsertLeave * call s:on_insert_leave()
+" Limit popup menu height
+set pumheight=20
 
-function! s:on_insert_leave()
-  if &updatetime < s:update_time_save
-    let &updatetime = s:update_time_save
-  endif
-endfunction
+" SuperTab completion fall-back 
+let g:SuperTabDefaultCompletionType='<c-x><c-u><c-p>'
+
+" SuperTab completion fall-back for context aware completion
+" (incompatible with g:clang_auto_select=0, using the above)
+" let g:SuperTabContextDefaultCompletionType='<c-x><c-u><c-p>'
+
+" Reparse the current translation unit in background
+command Parse
+            \ if &ft == 'cpp'                 |
+            \   call g:ClangBackgroundParse() |
+            \ else                            |
+            \   echom 'Parse What?'           |
+            \ endif
+
+" Reparse the current translation unit and check for errors
+command ClangCheck
+            \ if &ft == 'cpp'                 |
+            \   call g:ClangUpdateQuickFix()  |
+            \ else                            |
+            \   echom 'Check What?'           |
+            \ endif
+
+noremap  <silent> <F5> :Parse<cr>
+noremap  <silent> <F6> :ClangCheck<cr>
+noremap! <silent> <F5> <c-o>:Parse<cr>
+noremap! <silent> <F6> <c-o>:ClangCheck<cr>
+
 "}}}
 " Syntastic {{{
 " ---------------
 Bundle 'scrooloose/syntastic'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_mode_map = { 'mode': 'passive',
-      \ 'active_filetypes': [''],
-      \ 'passive_filetypes': [''] }
+            \ 'active_filetypes': [''],
+            \ 'passive_filetypes': [''] }
 nnoremap sc :SyntasticCheck<cr>
 "}}}
 " NERDTree {{{
@@ -509,7 +563,7 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files --exclude-standard -c
 
 " open multiple files with <c-z> to mark and <c-o> to open. v - opening in
 " vertical splits; j - jump to first open buffer; r - open first in current
- buffer
+buffer
 let g:ctrlp_open_multiple_files = 'vjr'
 
 let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'mixed', 'line']
@@ -573,3 +627,5 @@ Bundle 'xml.vim'
 " ----------------------------------------
 " transparent bg in vim
 hi Normal ctermbg=NONE
+
+autocmd FileType cpp setlocal tabstop=3 shiftwidth=3 softtabstop=3
