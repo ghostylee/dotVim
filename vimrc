@@ -386,20 +386,22 @@ Bundle 'Shougo/vimshell'
 "}}}
 " Neocachecompl {{{
 " ---------------
-"Bundle 'Shougo/neocomplcache'
-"Bundle 'Shougo/neosnippet'
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neosnippet'
+Bundle 'Shougo/neocomplcache-clang_complete'
 let g:neocomplcache_enable_at_startup=1
 let g:neocomplcache_manual_completion_start_length=0
 let g:neocomplcache_disable_auto_complete=0
 let g:neocomplcache_enable_auto_select=1 "Select the first entry automatically
 let g:neocomplcache_lock_iminsert=1
 let g:neocomplcache_auto_completion_start_length=2
+let g:neocomplcache_force_overwrite_completefunc=1
 
 " SuperTab like snippets behavior.
-"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<TAB>"
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<TAB>"
 
-"inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-"inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
@@ -411,7 +413,7 @@ function! s:my_cr_function()
 endfunction
 
 " Enable omni completion.
-autocmd FileType c,cpp setlocal omnifunc=ccomplete#Complete
+"autocmd FileType c,cpp setlocal omnifunc=ccomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -426,57 +428,12 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " clang_complete {{{
 " ---------------
 Bundle 'Rip-Rip/clang_complete'
-" Clang Complete Settings
-" g:clang_user_options set at vimprj section
+set completeopt=menu,menuone,longest
+set pumheight=15
+let g:clang_complete_auto=1
 let g:clang_use_library=1
-let g:clang_complete_copen=1
-let g:clang_complete_macros=1
-let g:clang_complete_patterns=0
-" Avoids lame path cache generation and other unknown sources for includes 
-let g:clang_memory_percent=70
-
-set conceallevel=2
-set concealcursor=vin
-let g:clang_snippets=1
-let g:clang_conceal_snippets=1
-" The single one that works with clang_complete
-let g:clang_snippets_engine='clang_complete'
-
-" Complete options (disable preview scratch window, longest removed to aways
-" show menu)
-set completeopt=menu,menuone
-
-" Limit popup menu height
-set pumheight=20
-
-" SuperTab completion fall-back 
-let g:SuperTabDefaultCompletionType='<c-x><c-u><c-p>'
-
-" SuperTab completion fall-back for context aware completion
-" (incompatible with g:clang_auto_select=0, using the above)
-" let g:SuperTabContextDefaultCompletionType='<c-x><c-u><c-p>'
-
-" Reparse the current translation unit in background
-command Parse
-            \ if &ft == 'cpp'                 |
-            \   call g:ClangBackgroundParse() |
-            \ else                            |
-            \   echom 'Parse What?'           |
-            \ endif
-
-" Reparse the current translation unit and check for errors
-command ClangCheck
-            \ if &ft == 'cpp'                 |
-            \   call g:ClangUpdateQuickFix()  |
-            \ else                            |
-            \   echom 'Check What?'           |
-            \ endif
-
-noremap  <silent> <F5> :Parse<cr>
-noremap  <silent> <F6> :ClangCheck<cr>
-noremap! <silent> <F5> <c-o>:Parse<cr>
-noremap! <silent> <F6> <c-o>:ClangCheck<cr>
-
+let g:clang_library_path="/usr/lib/llvm/"
+let g:clang_user_options='|| exit 0'
 "}}}
 " Syntastic {{{
 " ---------------
