@@ -427,13 +427,13 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "}}}
 " clang_complete {{{
 " ---------------
-Bundle 'Rip-Rip/clang_complete'
-set completeopt=menu,menuone,longest
-set pumheight=15
-let g:clang_complete_auto=1
-let g:clang_use_library=1
-let g:clang_library_path="/usr/lib/llvm/"
-let g:clang_user_options='|| exit 0'
+"Bundle 'Rip-Rip/clang_complete'
+"set completeopt=menu,menuone,longest
+"set pumheight=15
+"let g:clang_complete_auto=1
+"let g:clang_use_library=1
+"let g:clang_library_path="/usr/lib/llvm/"
+"let g:clang_user_options='|| exit 0'
 "}}}
 " Syntastic {{{
 " ---------------
