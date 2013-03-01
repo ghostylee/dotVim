@@ -388,20 +388,21 @@ Bundle 'Shougo/vimshell'
 " ---------------
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet'
-Bundle 'Shougo/neocomplcache-clang_complete'
+"Bundle 'Shougo/neocomplcache-clang_complete'
 let g:neocomplcache_enable_at_startup=1
-let g:neocomplcache_manual_completion_start_length=0
-let g:neocomplcache_disable_auto_complete=0
+let g:neocomplcache_manual_completion_start_length=2
+let g:neocomplcache_disable_auto_complete=1
 let g:neocomplcache_enable_auto_select=1 "Select the first entry automatically
 let g:neocomplcache_lock_iminsert=1
 let g:neocomplcache_auto_completion_start_length=2
 let g:neocomplcache_force_overwrite_completefunc=1
 
 " SuperTab like snippets behavior.
-imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<TAB>"
+"imap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<C-x><C-u>"
+imap <expr><S-TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<S-TAB>"
 
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+"inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
@@ -423,7 +424,9 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "}}}
 " SuperTab {{{
 " ---------------
-"Bundle 'ervandew/supertab'
+Bundle 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
+let g:SuperTabMappingBackward = '<c-p>'
 "}}}
 " clang_complete {{{
 " ---------------
@@ -437,7 +440,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "}}}
 " Syntastic {{{
 " ---------------
-Bundle 'scrooloose/syntastic'
+"Bundle 'scrooloose/syntastic'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_mode_map = { 'mode': 'passive',
             \ 'active_filetypes': [''],
