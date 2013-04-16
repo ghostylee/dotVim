@@ -453,15 +453,9 @@ Bundle 'scrooloose/nerdtree'
 let g:NERDTreeDirArrows=0
 nnoremap <leader>e :NERDTreeToggle<CR>
 "}}}
-" Indent Guides {{{
+" Indent Line {{{
 " ---------------
-Bundle 'mutewinter/vim-indent-guides'
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_start_level           = 2
-let g:indent_guides_guide_size            = 1
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#003366 ctermbg=24
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#003366 ctermbg=24
+Bundle 'Yggdroot/indentLine'
 "}}}
 " Session {{{
 " ---------------
@@ -580,7 +574,6 @@ Bundle 'vitaly/vim-syntastic-coffee'
 Bundle 'vim-scripts/jade.vim'
 Bundle 'wavded/vim-stylus'
 Bundle 'VimClojure'
-Bundle 'bbommarito/vim-slim'
 Bundle 'skammer/vim-css-color'
 Bundle 'xml.vim'
 "}}}
