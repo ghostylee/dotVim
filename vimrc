@@ -434,6 +434,12 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 "}}}
+" Unite {{{
+" ---------------
+Bundle 'Shougo/unite.vim'
+let g:unite_force_overwrite_statusline = 0
+let g:unite_winheight=10
+"}}}
 " SuperTab {{{
 " ---------------
 "Bundle 'ervandew/supertab'
