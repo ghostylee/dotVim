@@ -384,34 +384,46 @@ Bundle 'Shougo/vimproc'
 " ---------------
 Bundle 'Shougo/vimshell'
 "}}}
-" Neocachecompl {{{
+" Neocomplete {{{
 " ---------------
-Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neocomplete'
 Bundle 'Shougo/neosnippet'
-"Bundle 'Shougo/neocomplcache-clang_complete'
-let g:neocomplcache_enable_at_startup=1
-let g:neocomplcache_manual_completion_start_length=2
-let g:neocomplcache_disable_auto_complete=1
-let g:neocomplcache_enable_auto_select=1 "Select the first entry automatically
-let g:neocomplcache_lock_iminsert=1
-let g:neocomplcache_auto_completion_start_length=2
-let g:neocomplcache_force_overwrite_completefunc=1
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
 
-" SuperTab like snippets behavior.
-"imap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<C-x><C-u>"
-imap <expr><S-TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<S-TAB>"
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-"inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-"inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-    "return neocomplcache#smart_close_popup() . "\<CR>"
-    " For no inserting <CR> key.
-    return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+  return neocomplete#smart_close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
 endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 " Enable omni completion.
 "autocmd FileType c,cpp setlocal omnifunc=ccomplete#Complete
@@ -424,9 +436,9 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "}}}
 " SuperTab {{{
 " ---------------
-Bundle 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
-let g:SuperTabMappingBackward = '<c-p>'
+"Bundle 'ervandew/supertab'
+"let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
+"let g:SuperTabMappingBackward = '<c-p>'
 "}}}
 " clang_complete {{{
 " ---------------
@@ -521,17 +533,6 @@ buffer
 let g:ctrlp_open_multiple_files = 'vjr'
 
 let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'mixed', 'line']
-"}}}
-" Powerline {{{
-" ---------------
-"Bundle 'Lokaltog/vim-powerline'
-"" Keep ^B from showing on Windows in Powerline
-"if has('win32') || has('win64')
-    "let g:Powerline_symbols = 'fancy'
-"elseif has('unix')
-    "let g:Powerline_symbols = 'fancy'
-"endif
-"call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 "}}}
 " airline {{{
 " ---------------
