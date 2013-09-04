@@ -524,14 +524,29 @@ let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'mixed', 'line']
 "}}}
 " Powerline {{{
 " ---------------
-Bundle 'Lokaltog/vim-powerline'
-" Keep ^B from showing on Windows in Powerline
-if has('win32') || has('win64')
-    let g:Powerline_symbols = 'fancy'
-elseif has('unix')
-    let g:Powerline_symbols = 'fancy'
-endif
-call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
+"Bundle 'Lokaltog/vim-powerline'
+"" Keep ^B from showing on Windows in Powerline
+"if has('win32') || has('win64')
+    "let g:Powerline_symbols = 'fancy'
+"elseif has('unix')
+    "let g:Powerline_symbols = 'fancy'
+"endif
+"call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
+"}}}
+" airline {{{
+" ---------------
+Bundle 'bling/vim-airline'
+let g:airline_theme="dark"
+" old vim-powerline symbols
+let g:airline_symbols = {}
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+let g:airline_symbols.branch = '⭠'
+let g:airline_symbols.readonly = '⭤'
+let g:airline_symbols.linenr = '⭡'
+let g:airline_powerline_fonts = 1
 "}}}
 " colorv {{{
 " ---------------
