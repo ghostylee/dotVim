@@ -581,7 +581,12 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'sjl/gundo.vim'
 nnoremap au :GundoToggle<CR>
 "}}}
+" gitv {{{
+" ---------------
+Bundle 'gregsexton/gitv'
 "}}}
+"}}}
+
 " ----------------------------------------
 " Syntax  {{{
 Bundle 'vim-ruby/vim-ruby'
