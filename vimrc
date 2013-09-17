@@ -560,10 +560,6 @@ let g:airline_powerline_fonts = 1
 Bundle 'Rykka/colorv.vim'
 let g:colorv_has_python=0
 "}}}
-" quickfixsigns {{{
-" ---------------
-Bundle 'tomtom/quickfixsigns_vim'
-"}}}
 " vim-surround {{{
 " ---------------
 Bundle 'tpope/vim-surround'
@@ -586,7 +582,6 @@ nnoremap au :GundoToggle<CR>
 Bundle 'gregsexton/gitv'
 "}}}
 "}}}
-
 " ----------------------------------------
 " Syntax  {{{
 Bundle 'vim-ruby/vim-ruby'
