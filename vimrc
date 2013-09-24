@@ -570,6 +570,10 @@ nnoremap au :GundoToggle<CR>
 " ---------------
 Bundle 'gregsexton/gitv'
 "}}}
+" vim-gitgutter {{{
+" ---------------
+Bundle 'airblade/vim-gitgutter'
+"}}}
 "}}}
 " ----------------------------------------
 " Syntax  {{{
