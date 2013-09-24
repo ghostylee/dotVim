@@ -372,10 +372,6 @@ hi cTODO guifg=#ff0000 guibg=#dfff00 gui=NONE ctermfg=196 ctermbg=190 cterm=NONE
 " Xterm-color-table {{{
 Bundle 'guns/xterm-color-table.vim'
 "}}}
-" vim-shell {{{
-" ---------------
-Bundle 'xolox/vim-shell'
-"}}}
 " vimproc {{{
 " ---------------
 Bundle 'Shougo/vimproc'
@@ -474,13 +470,6 @@ nnoremap <leader>e :NERDTreeToggle<CR>
 " Indent Line {{{
 " ---------------
 Bundle 'Yggdroot/indentLine'
-"}}}
-" Session {{{
-" ---------------
-Bundle 'xolox/vim-session'
-let g:session_autosave=0
-let g:session_autoload=0
-nnoremap <leader>os :OpenSession<CR>
 "}}}
 " Tabular {{{
 " ---------------
