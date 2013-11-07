@@ -134,7 +134,7 @@ highlight NonText guifg=#444444 guibg=NONE gui=NONE ctermfg=238 ctermbg=NONE cte
 highlight SpecialKey guifg=#444444 guibg=NONE gui=NONE ctermfg=238 ctermbg=NONE cterm=NONE
 
 "set cursorcolumn
-set cursorline
+"set cursorline
 
 if &term=="xterm"
   " solid underscore
