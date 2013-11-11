@@ -572,7 +572,7 @@ Bundle 'gregsexton/gitv'
 "}}}
 " vim-gitgutter {{{
 " ---------------
-Bundle 'airblade/vim-gitgutter'
+"Bundle 'airblade/vim-gitgutter'
 "}}}
 "}}}
 " ----------------------------------------
