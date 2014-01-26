@@ -38,7 +38,7 @@ URxvt*font                     : xft:DejaVu Sans Mono for Powerline:size=10:anti
 urxvt*cursorColor              : #DCDCCC
 !}}}
 !  - pseudo transparency{{{
-urxvt*shading                 : 50
+urxvt*shading                 : 30
 urxvt*transparent             : true
 !
 !}}}
