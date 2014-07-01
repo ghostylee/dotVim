@@ -1,13 +1,10 @@
 #!/bin/sh
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
-export XMODIFIERS="@im=ibus"
-export XIM=ibus
-export XIM_PROGRAM=ibus
-export GTK_IM_MODULE="ibus"
 export QT_IM_MODULE="xim"
-ibus-daemon -d -x -r -n awesome
-bluetooth-applet &
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+compton &
 nm-applet &
-conky &
 python2.7 ~/goagent/local/proxy.py &
 exec /usr/bin/awesome
