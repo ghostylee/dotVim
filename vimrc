@@ -31,9 +31,13 @@ Bundle 'nanotech/jellybeans.vim'
 " Make cssAttrs (center, block, etc.) the same color as units
 hi! link cssAttr Constant
 "}}}
+" solaried color {{{
+Bundle 'altercation/vim-colors-solarized'
+"}}}
 " Theme{{{
 set t_Co=256
-colorscheme jellybeans
+set background=dark
+colorscheme solarized
 "}}}
 "}}}
 " Backups {{{
@@ -534,14 +538,14 @@ let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'mixed', 'line']
 Bundle 'bling/vim-airline'
 let g:airline_theme="dark"
 " old vim-powerline symbols
-let g:airline_symbols = {}
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
-let g:airline_symbols.branch = '⭠'
-let g:airline_symbols.readonly = '⭤'
-let g:airline_symbols.linenr = '⭡'
+"let g:airline_symbols = {}
+"let g:airline_left_sep = '⮀'
+"let g:airline_left_alt_sep = '⮁'
+"let g:airline_right_sep = '⮂'
+"let g:airline_right_alt_sep = '⮃'
+"let g:airline_symbols.branch = '⭠'
+"let g:airline_symbols.readonly = '⭤'
+"let g:airline_symbols.linenr = '⭡'
 let g:airline_powerline_fonts = 1
 "}}}
 " colorv {{{
@@ -594,6 +598,6 @@ Bundle 'xml.vim'
 "}}}
 " ----------------------------------------
 " transparent bg in vim
-hi Normal ctermbg=NONE
+"hi Normal ctermbg=NONE
 
 autocmd FileType cpp setlocal tabstop=3 shiftwidth=3 softtabstop=3
