@@ -34,10 +34,14 @@ hi! link cssAttr Constant
 " solaried color {{{
 Bundle 'altercation/vim-colors-solarized'
 "}}}
+" vividchalk color {{{
+Bundle 'tpope/vim-vividchalk'
+"}}}
 " Theme{{{
 set t_Co=256
 set background=dark
-colorscheme solarized
+"colorscheme solarized
+colorscheme vividchalk
 "}}}
 "}}}
 " Backups {{{
@@ -148,9 +152,9 @@ if &term=="xterm"
   " 1 or 0 -> blinking block
   " 3 -> blinking underscore
   " change cursor shape in gnome-terminal
-  au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-  au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-  au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+  "au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+  "au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+  "au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
 elseif &term=="rxvt-unicode-256color"
   " change cursor color in urxvt
   let &t_SI = "\<Esc>]12;red\x7"
@@ -536,7 +540,7 @@ let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'mixed', 'line']
 " airline {{{
 " ---------------
 Bundle 'bling/vim-airline'
-let g:airline_theme="dark"
+let g:airline_theme="simple"
 " old vim-powerline symbols
 "let g:airline_symbols = {}
 "let g:airline_left_sep = '⮀'
