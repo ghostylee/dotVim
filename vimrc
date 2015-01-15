@@ -8,7 +8,7 @@
 
 set nocompatible " be iMproved
 filetype off     " required!
-
+set shell=/bin/bash
 set rtp+=~/.vim/bundle/vundle/
 
 call vundle#rc()
@@ -34,10 +34,20 @@ hi! link cssAttr Constant
 " solaried color {{{
 Bundle 'altercation/vim-colors-solarized'
 "}}}
+" vividchalk color {{{
+Bundle 'tpope/vim-vividchalk'
+"}}}
+" molokai color {{{
+Bundle 'tomasr/molokai'
+"}}}
+" tomorrow color {{{
+Bundle 'chriskempson/tomorrow-theme'
+"}}}
 " Theme{{{
 set t_Co=256
 set background=dark
-colorscheme solarized
+"colorscheme solarized
+colorscheme vividchalk
 "}}}
 "}}}
 " Backups {{{
@@ -140,22 +150,22 @@ highlight SpecialKey guifg=#444444 guibg=NONE gui=NONE ctermfg=238 ctermbg=NONE 
 "set cursorcolumn
 "set cursorline
 
-if &term=="xterm"
-  " solid underscore
-  let &t_SI .= "\<Esc>[3 q"
-  " solid block
-  let &t_EI .= "\<Esc>[1 q"
-  " 1 or 0 -> blinking block
-  " 3 -> blinking underscore
-  " change cursor shape in gnome-terminal
-  au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-  au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-  au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-elseif &term=="rxvt-unicode-256color"
-  " change cursor color in urxvt
-  let &t_SI = "\<Esc>]12;red\x7"
-  let &t_EI = "\<Esc>]12;grey80\x7"
-endif
+"if &term=="xterm"
+  "" solid underscore
+  "let &t_SI .= "\<Esc>[3 q"
+  "" solid block
+  "let &t_EI .= "\<Esc>[1 q"
+  "" 1 or 0 -> blinking block
+  "" 3 -> blinking underscore
+  "" change cursor shape in gnome-terminal
+  "au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+  "au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+  "au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+"elseif &term=="rxvt-unicode-256color"
+  "" change cursor color in urxvt
+  "let &t_SI = "\<Esc>]12;red\x7"
+  "let &t_EI = "\<Esc>]12;grey80\x7"
+"endif
 "}}}
 " Sounds {{{
 " ---------------
@@ -536,16 +546,7 @@ let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'mixed', 'line']
 " airline {{{
 " ---------------
 Bundle 'bling/vim-airline'
-let g:airline_theme="dark"
-" old vim-powerline symbols
-"let g:airline_symbols = {}
-"let g:airline_left_sep = '⮀'
-"let g:airline_left_alt_sep = '⮁'
-"let g:airline_right_sep = '⮂'
-"let g:airline_right_alt_sep = '⮃'
-"let g:airline_symbols.branch = '⭠'
-"let g:airline_symbols.readonly = '⭤'
-"let g:airline_symbols.linenr = '⭡'
+let g:airline_theme="simple"
 let g:airline_powerline_fonts = 1
 "}}}
 " colorv {{{
@@ -565,18 +566,13 @@ Bundle 'scrooloose/nerdcommenter'
 " ---------------
 Bundle 'Raimondi/delimitMate'
 "}}}
-" Gundo {{{
-" ---------------
-Bundle 'sjl/gundo.vim'
-nnoremap au :GundoToggle<CR>
-"}}}
 " gitv {{{
 " ---------------
 Bundle 'gregsexton/gitv'
 "}}}
-" vim-gitgutter {{{
+" gitgutter {{{
 " ---------------
-"Bundle 'airblade/vim-gitgutter'
+Bundle 'airblade/vim-gitgutter'
 "}}}
 "}}}
 " ----------------------------------------
