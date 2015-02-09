@@ -555,6 +555,12 @@ Bundle 'gregsexton/gitv'
 " ---------------
 Bundle 'airblade/vim-gitgutter'
 "}}}
+" pytest.vim {{{
+" ---------------
+Bundle 'alfredodeza/pytest.vim'
+" Pytest
+nmap <silent><Leader>f <Esc>:Pytest file<CR>
+"}}}
 "}}}
 " ----------------------------------------
 " Syntax  {{{
