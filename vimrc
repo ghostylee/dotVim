@@ -72,8 +72,8 @@ if has('win32') || has('win64')
 else
   "set guifont=YaHei\ Mono\ 11
   "set guifont=YaHei\ Consolas\ hybrid\ for\ Powerline\ 11
-  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
-  set guifontwide=WenQuanYi\ Zen\ Hei\ Mono\ 10
+  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12
+  set guifontwide=WenQuanYi\ Zen\ Hei\ Mono\ 12
 endif
 "}}}
 " UI {{{
