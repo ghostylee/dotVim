@@ -2,7 +2,6 @@
 " vimrc from ghostylee <ghosty.lee.1984@gmail.com>
 " =================================================
 
-" ----------------------------------------
 " Vundle {{{
 " ----------------------------------------
 
@@ -20,7 +19,6 @@ nmap <Leader>bi :BundleInstall<CR>
 nmap <Leader>bu :BundleInstall!<CR> " Because this also updates
 nmap <Leader>bc :BundleClean<CR>
 "}}}
-" ----------------------------------------
 " Regular Vim Configuration (No Plugins Needed) {{{
 " ----------------------------------------
 " Color {{{
@@ -176,7 +174,6 @@ autocmd FileType xml set foldmethod=syntax
 set path+=;,include;inc;
 "}}}
 "}}}
-" ----------------------------------------
 " Platform Specific Configuration {{{
 " ----------------------------------------
 if has('win32') || has('win64')
@@ -202,7 +199,6 @@ elseif has('gui_macvim')
   set macmeta
 endif
 "}}}
-" ----------------------------------------
 " Bindings {{{
 " ----------------------------------------
 " Set leader to , {{{
@@ -285,7 +281,6 @@ nnoremap [q :cprev<cr>
 nnoremap ]q :cnext<cr>
 "}}}
 "}}}
-" ----------------------------------------
 " Plugin Configuration {{{
 " ----------------------------------------
 " Tagbar{{{
@@ -369,7 +364,7 @@ Bundle 'guns/xterm-color-table.vim'
 "}}}
 " vimproc {{{
 " ---------------
-Bundle 'Shougo/vimproc'
+"Bundle 'Shougo/vimproc'
 "}}}
 " vimshell {{{
 " ---------------
@@ -561,8 +556,11 @@ Bundle 'alfredodeza/pytest.vim'
 " Pytest
 nmap <silent><Leader>f <Esc>:Pytest file<CR>
 "}}}
+" vim-flake8 {{{
+" ---------------
+Bundle 'nvie/vim-flake8'
 "}}}
-" ----------------------------------------
+"}}}
 " Syntax  {{{
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tsaleh/vim-tmux'
@@ -577,10 +575,4 @@ Bundle 'vim-scripts/jade.vim'
 Bundle 'wavded/vim-stylus'
 Bundle 'VimClojure'
 Bundle 'skammer/vim-css-color'
-Bundle 'xml.vim'
 "}}}
-" ----------------------------------------
-" transparent bg in vim
-"hi Normal ctermbg=NONE
-
-autocmd FileType cpp setlocal tabstop=3 shiftwidth=3 softtabstop=3
