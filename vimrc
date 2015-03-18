@@ -407,6 +407,10 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+" neosnippet key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 "}}}
 " SuperTab {{{
 " ---------------
@@ -502,7 +506,7 @@ Plugin 'gregsexton/gitv'
 "}}}
 " gitgutter {{{
 " ---------------
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-gitgutter'
 "}}}
 " pytest.vim {{{
 " ---------------
