@@ -359,17 +359,6 @@ hi cPreCondit guifg=#ff8700 guibg=NONE gui=NONE ctermfg=208 ctermbg=NONE cterm=N
 hi cTODO guifg=#ff0000 guibg=#dfff00 gui=NONE ctermfg=196 ctermbg=190 cterm=NONE
 "}}}
 "}}}
-" Xterm-color-table {{{
-Plugin 'guns/xterm-color-table.vim'
-"}}}
-" vimproc {{{
-" ---------------
-"Plugin 'Shougo/vimproc'
-"}}}
-" vimshell {{{
-" ---------------
-Plugin 'Shougo/vimshell'
-"}}}
 " Neocomplete {{{
 " ---------------
 Plugin 'Shougo/neocomplete'
@@ -421,36 +410,11 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 "}}}
-" Unite {{{
-" ---------------
-Plugin 'Shougo/unite.vim'
-let g:unite_force_overwrite_statusline = 0
-let g:unite_winheight=10
-"}}}
 " SuperTab {{{
 " ---------------
 "Plugin 'ervandew/supertab'
 "let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
 "let g:SuperTabMappingBackward = '<c-p>'
-"}}}
-" clang_complete {{{
-" ---------------
-"Plugin 'Rip-Rip/clang_complete'
-"set completeopt=menu,menuone,longest
-"set pumheight=15
-"let g:clang_complete_auto=1
-"let g:clang_use_library=1
-"let g:clang_library_path="/usr/lib/llvm/"
-"let g:clang_user_options='|| exit 0'
-"}}}
-" Syntastic {{{
-" ---------------
-"Plugin 'scrooloose/syntastic'
-let g:syntastic_auto_loc_list=1
-let g:syntastic_mode_map = { 'mode': 'passive',
-            \ 'active_filetypes': [''],
-            \ 'passive_filetypes': [''] }
-nnoremap sc :SyntasticCheck<cr>
 "}}}
 " NERDTree {{{
 " ---------------
@@ -525,15 +489,6 @@ let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'mixed', 'line']
 Plugin 'bling/vim-airline'
 let g:airline_theme="simple"
 let g:airline_powerline_fonts = 1
-"}}}
-" colorv {{{
-" ---------------
-Plugin 'Rykka/colorv.vim'
-let g:colorv_has_python=0
-"}}}
-" vim-surround {{{
-" ---------------
-Plugin 'tpope/vim-surround'
 "}}}
 " nerdcommenter {{{
 " ---------------
