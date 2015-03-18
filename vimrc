@@ -13,11 +13,11 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle, required
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 let g:vundle_default_git_proto = 'https'
-nmap <Leader>bi :BundleInstall<CR>
-nmap <Leader>bu :BundleInstall!<CR> " Because this also updates
-nmap <Leader>bc :BundleClean<CR>
+nmap <Leader>bi :PluginInstall<CR>
+nmap <Leader>bu :PluginInstall!<CR> " Because this also updates
+nmap <Leader>bc :PluginClean<CR>
 "}}}
 " Regular Vim Configuration (No Plugins Needed) {{{
 " ----------------------------------------
@@ -25,21 +25,21 @@ nmap <Leader>bc :BundleClean<CR>
 " ---------------
 " jellybeans.vim colorscheme tweaks {{{
 " ---------------
-Bundle 'nanotech/jellybeans.vim'
+Plugin 'nanotech/jellybeans.vim'
 " Make cssAttrs (center, block, etc.) the same color as units
 hi! link cssAttr Constant
 "}}}
 " solaried color {{{
-Bundle 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized'
 "}}}
 " vividchalk color {{{
-Bundle 'tpope/vim-vividchalk'
+Plugin 'tpope/vim-vividchalk'
 "}}}
 " molokai color {{{
-Bundle 'tomasr/molokai'
+Plugin 'tomasr/molokai'
 "}}}
 " tomorrow color {{{
-Bundle 'chriskempson/tomorrow-theme'
+Plugin 'chriskempson/tomorrow-theme'
 "}}}
 " Theme{{{
 set t_Co=256
@@ -285,7 +285,7 @@ nnoremap ]q :cnext<cr>
 " ----------------------------------------
 " Tagbar{{{
 " ---------------
-Bundle 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 let g:tagbar_width = 30
 nnoremap <leader>t :TagbarToggle<cr>
 "}}}
@@ -340,7 +340,7 @@ endif
 "}}}
 " TagHighlight {{{
 " ---------------
-Bundle 'abudden/TagHighlight'
+Plugin 'abudden/TagHighlight'
 nnoremap ut :UpdateTypesFile <cr>
 " colors for Taghighlight {{{
 hi Class guifg=#800080 guibg=NONE gui=NONE ctermfg=90 ctermbg=NONE cterm=NONE
@@ -360,20 +360,21 @@ hi cTODO guifg=#ff0000 guibg=#dfff00 gui=NONE ctermfg=196 ctermbg=190 cterm=NONE
 "}}}
 "}}}
 " Xterm-color-table {{{
-Bundle 'guns/xterm-color-table.vim'
+Plugin 'guns/xterm-color-table.vim'
 "}}}
 " vimproc {{{
 " ---------------
-"Bundle 'Shougo/vimproc'
+"Plugin 'Shougo/vimproc'
 "}}}
 " vimshell {{{
 " ---------------
-Bundle 'Shougo/vimshell'
+Plugin 'Shougo/vimshell'
 "}}}
 " Neocomplete {{{
 " ---------------
-Bundle 'Shougo/neocomplete'
-Bundle 'Shougo/neosnippet'
+Plugin 'Shougo/neocomplete'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
@@ -422,19 +423,19 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "}}}
 " Unite {{{
 " ---------------
-Bundle 'Shougo/unite.vim'
+Plugin 'Shougo/unite.vim'
 let g:unite_force_overwrite_statusline = 0
 let g:unite_winheight=10
 "}}}
 " SuperTab {{{
 " ---------------
-"Bundle 'ervandew/supertab'
+"Plugin 'ervandew/supertab'
 "let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
 "let g:SuperTabMappingBackward = '<c-p>'
 "}}}
 " clang_complete {{{
 " ---------------
-"Bundle 'Rip-Rip/clang_complete'
+"Plugin 'Rip-Rip/clang_complete'
 "set completeopt=menu,menuone,longest
 "set pumheight=15
 "let g:clang_complete_auto=1
@@ -444,7 +445,7 @@ let g:unite_winheight=10
 "}}}
 " Syntastic {{{
 " ---------------
-"Bundle 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_mode_map = { 'mode': 'passive',
             \ 'active_filetypes': [''],
@@ -453,17 +454,17 @@ nnoremap sc :SyntasticCheck<cr>
 "}}}
 " NERDTree {{{
 " ---------------
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 let g:NERDTreeDirArrows=0
 nnoremap <leader>e :NERDTreeToggle<CR>
 "}}}
 " Indent Line {{{
 " ---------------
-Bundle 'Yggdroot/indentLine'
+Plugin 'Yggdroot/indentLine'
 "}}}
 " Tabular {{{
 " ---------------
-Bundle 'godlygeek/tabular'
+Plugin 'godlygeek/tabular'
 nmap <Leader>t= :Tabularize /=<CR>
 vmap <Leader>t= :Tabularize /=<CR>
 nmap <Leader>t: :Tabularize /:\zs<CR>
@@ -479,7 +480,7 @@ vmap <Leader>t" :Tabularize /"<CR>
 "}}}
 " Fugitive {{{
 " ---------------
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 nmap <Leader>gc :Gcommit<CR>
 nmap <Leader>gw :Gwrite<CR>
 nmap <Leader>gs :Gstatus<CR>
@@ -492,7 +493,7 @@ nmap <Leader>gx :wincmd h<CR>:q<CR>
 "}}}
 " ctrlp.vim {{{
 " ---------------
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 let g:ctrlp_map = '<leader>,'
 let g:ctrlp_cmd = 'CtrlP'
 " Ensure max height isn't too large. (for performance)
@@ -521,58 +522,58 @@ let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'mixed', 'line']
 "}}}
 " airline {{{
 " ---------------
-Bundle 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 let g:airline_theme="simple"
 let g:airline_powerline_fonts = 1
 "}}}
 " colorv {{{
 " ---------------
-Bundle 'Rykka/colorv.vim'
+Plugin 'Rykka/colorv.vim'
 let g:colorv_has_python=0
 "}}}
 " vim-surround {{{
 " ---------------
-Bundle 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 "}}}
 " nerdcommenter {{{
 " ---------------
-Bundle 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
 "}}}
 " delimitMate {{{
 " ---------------
-Bundle 'Raimondi/delimitMate'
+Plugin 'Raimondi/delimitMate'
 "}}}
 " gitv {{{
 " ---------------
-Bundle 'gregsexton/gitv'
+Plugin 'gregsexton/gitv'
 "}}}
 " gitgutter {{{
 " ---------------
-Bundle 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-gitgutter'
 "}}}
 " pytest.vim {{{
 " ---------------
-Bundle 'alfredodeza/pytest.vim'
+Plugin 'alfredodeza/pytest.vim'
 " Pytest
 nmap <silent><Leader>f <Esc>:Pytest file<CR>
 "}}}
 " vim-flake8 {{{
 " ---------------
-Bundle 'nvie/vim-flake8'
+Plugin 'nvie/vim-flake8'
 "}}}
 "}}}
 " Syntax  {{{
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tsaleh/vim-tmux'
-Bundle 'Puppet-Syntax-Highlighting'
-Bundle 'JSON.vim'
-Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-markdown'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'vitaly/vim-syntastic-coffee'
-Bundle 'vim-scripts/jade.vim'
-Bundle 'wavded/vim-stylus'
-Bundle 'VimClojure'
-Bundle 'skammer/vim-css-color'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tsaleh/vim-tmux'
+Plugin 'Puppet-Syntax-Highlighting'
+Plugin 'JSON.vim'
+Plugin 'tpope/vim-cucumber'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-markdown'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'vitaly/vim-syntastic-coffee'
+Plugin 'vim-scripts/jade.vim'
+Plugin 'wavded/vim-stylus'
+Plugin 'VimClojure'
+Plugin 'skammer/vim-css-color'
 "}}}
