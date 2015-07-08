@@ -181,6 +181,8 @@ if has('win32') || has('win64')
   set lines=60
   set columns=120
 
+  set shell=$COMSPEC
+
   " Windows has a nasty habit of launching gVim in the wrong working directory
   "cd ~
 elseif has('gui_macvim')
