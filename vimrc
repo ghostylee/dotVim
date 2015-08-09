@@ -44,8 +44,8 @@ Plugin 'chriskempson/tomorrow-theme'
 " Theme{{{
 set t_Co=256
 set background=dark
-"colorscheme solarized
-colorscheme vividchalk
+colorscheme solarized
+"colorscheme vividchalk
 "}}}
 "}}}
 " Backups {{{
