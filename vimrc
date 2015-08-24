@@ -44,8 +44,8 @@ Plugin 'chriskempson/tomorrow-theme'
 " Theme{{{
 set t_Co=256
 set background=dark
-"colorscheme solarized
-colorscheme vividchalk
+colorscheme solarized
+"colorscheme vividchalk
 "}}}
 "}}}
 " Backups {{{
@@ -520,6 +520,14 @@ nmap <silent><Leader>f <Esc>:Pytest file<CR>
 " ---------------
 Plugin 'nvie/vim-flake8'
 "}}}
+" vim-autoformat {{{
+" ---------------
+Plugin 'Chiel92/vim-autoformat'
+noremap <F3> :Autoformat<CR>
+let g:formatdef_my_custom_c = '"astyle --mode=c --style=allman -pHUfjs4xexC80"'
+let g:formatters_c = ['my_custom_c']
+"}}}
+
 "}}}
 " Syntax  {{{
 Plugin 'vim-ruby/vim-ruby'
