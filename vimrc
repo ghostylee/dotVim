@@ -524,10 +524,9 @@ Plugin 'nvie/vim-flake8'
 " ---------------
 Plugin 'Chiel92/vim-autoformat'
 noremap <F3> :Autoformat<CR>
-let g:formatdef_my_custom_c = '"astyle --mode=c --style=allman -pHUfjs4xexC80"'
+let g:formatdef_my_custom_c = '"astyle --mode=c --style=allman -CSxWYm0M40k1W3pHUfjs4xexC80"'
 let g:formatters_c = ['my_custom_c']
 "}}}
-
 "}}}
 " Syntax  {{{
 Plugin 'vim-ruby/vim-ruby'
