@@ -65,13 +65,13 @@ set langmenu=zh_CN.UTF-8  " chinese menu
 " Font {{{
 " ---------------
 if has('win32') || has('win64')
-  set guifont=DejaVu_Sans_Mono_for_Powerline:h10
-  set guifontwide=Yahei_Mono:h10:cGB2312
+    set guifont=DejaVu_Sans_Mono_for_Powerline:h10
+    set guifontwide=Yahei_Mono:h10:cGB2312
 else
-  "set guifont=YaHei\ Mono\ 11
-  "set guifont=YaHei\ Consolas\ hybrid\ for\ Powerline\ 11
-  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12
-  set guifontwide=WenQuanYi\ Zen\ Hei\ Mono\ 12
+    "set guifont=YaHei\ Mono\ 11
+    "set guifont=YaHei\ Consolas\ hybrid\ for\ Powerline\ 11
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12
+    set guifontwide=WenQuanYi\ Zen\ Hei\ Mono\ 12
 endif
 "}}}
 " UI {{{
@@ -83,7 +83,7 @@ set nowrap         " Line wrapping off
 set laststatus=2   " Always show the statusline
 set cmdheight=2    " Make the command area two lines high
 if exists('+colorcolumn')
-  set colorcolumn=80 " Color the 80th column differently
+    set colorcolumn=80 " Color the 80th column differently
 endif
 "}}}
 " GVIM{{{
@@ -177,28 +177,28 @@ set path+=;,include;inc;
 " Platform Specific Configuration {{{
 " ----------------------------------------
 if has('win32') || has('win64')
-  " Set height and width on Windows
-  set lines=60
-  set columns=120
+    " Set height and width on Windows
+    set lines=60
+    set columns=120
 
-  set shell=$COMSPEC
+    set shell=$COMSPEC
 
-  " Windows has a nasty habit of launching gVim in the wrong working directory
-  "cd ~
+    " Windows has a nasty habit of launching gVim in the wrong working directory
+    "cd ~
 elseif has('gui_macvim')
-  " MacVim
+    " MacVim
 
-  " Custom Menlo font for Powerline
-  " From: https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
-  set guifont=Menlo\ for\ Powerline:h12
+    " Custom Menlo font for Powerline
+    " From: https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
+    set guifont=Menlo\ for\ Powerline:h12
 
-  " Hide Toolbar in MacVim
-  if has("gui_running")
-    set guioptions=egmrt
-  endif
+    " Hide Toolbar in MacVim
+    if has("gui_running")
+        set guioptions=egmrt
+    endif
 
-  " Use option (alt) as meta key.
-  set macmeta
+    " Use option (alt) as meta key.
+    set macmeta
 endif
 "}}}
 " Bindings {{{
@@ -225,10 +225,10 @@ imap <C-l> <C-x><C-l>
 " Show highlighting groups for current word {{{
 nmap <C-S-P> : call <SID>SynStack()<CR>
 function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+    if !exists("*synstack")
+        return
+    endif
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 "}}}
 " Leader Commands {{{
@@ -248,29 +248,29 @@ nmap <silent> <C-l> :wincmd l<CR>
 " Auto Commands {{{
 " ----------------------------------------
 if has("autocmd")
-  " No formatting on o key newlines
-  autocmd BufNewFile,BufEnter * set formatoptions-=o
+    " No formatting on o key newlines
+    autocmd BufNewFile,BufEnter * set formatoptions-=o
 
-  " No more complaining about untitled documents
-  autocmd FocusLost silent! :wa
+    " No more complaining about untitled documents
+    autocmd FocusLost silent! :wa
 
-  " When editing a file, always jump to the last cursor position.
-  " This must be after the uncompress commands.
-  autocmd BufReadPost *
-        \ if line("'\"") > 1 && line ("'\"") <= line("$") |
-        \   exe "normal! g`\"" |
-        \ endif
-  " vim -b : edit binary using xxd-format!
-  augroup Binary
-    "au!
-    "au BufReadPre  *.bin let &bin=1
-    "au BufReadPost *.bin if &bin | %!xxd
-    "au BufReadPost *.bin set ft=xxd | endif
-    "au BufWritePre *.bin if &bin | %!xxd -r
-    "au BufWritePre *.bin endif
-    "au BufWritePost *.bin if &bin | %!xxd
-    "au BufWritePost *.bin set nomod | endif
-  augroup END
+    " When editing a file, always jump to the last cursor position.
+    " This must be after the uncompress commands.
+    autocmd BufReadPost *
+                \ if line("'\"") > 1 && line ("'\"") <= line("$") |
+                \   exe "normal! g`\"" |
+                \ endif
+    " vim -b : edit binary using xxd-format!
+    augroup Binary
+        "au!
+        "au BufReadPre  *.bin let &bin=1
+        "au BufReadPost *.bin if &bin | %!xxd
+        "au BufReadPost *.bin set ft=xxd | endif
+        "au BufWritePre *.bin if &bin | %!xxd -r
+        "au BufWritePre *.bin endif
+        "au BufWritePost *.bin if &bin | %!xxd
+        "au BufWritePost *.bin set nomod | endif
+    augroup END
 endif
 "}}}
 " <s-k> to open help{{{
@@ -295,49 +295,49 @@ nnoremap <leader>t :TagbarToggle<cr>
 " ---------------
 set tags=tags;,~/_vimtags  "; here let vim go to up folds until find one tags file
 if has('win32') || has('win64')
-  nnoremap ec :!start ctags -R --fields=+l --c-kinds=+pl --c++-kinds=+pl .<cr>
+    nnoremap ec :!start ctags -R --fields=+l --c-kinds=+pl --c++-kinds=+pl .<cr>
 else
-  nnoremap ec :!ctags -R --fields=+l --c-kinds=+pl --c++-kinds=+pl .<cr>
+    nnoremap ec :!ctags -R --fields=+l --c-kinds=+pl --c++-kinds=+pl .<cr>
 endif
 "}}}
 " cscope {{{
 if has('cscope')
-  set cscopetag cscopeverbose
+    set cscopetag cscopeverbose
 
-  if has('quickfix')
-    set cscopequickfix=s-,c-,d-,i-,t-,e-,g-,f-
-  endif
-  set csto=0
-
-  " auto load cscope.out file (TODO:not work in window now)
-  function! LoadCscope()
-    let db = findfile("cscope.out", ".;")
-    if (!empty(db))
-      echo db
-      let path = strpart(db, 0, match(db, "/cscope.out$"))
-      set nocscopeverbose " suppress 'duplicate connection' error
-      exe "cs add " . db . " " . path
-      set cscopeverbose
+    if has('quickfix')
+        set cscopequickfix=s-,c-,d-,i-,t-,e-,g-,f-
     endif
-  endfunction
-  "au BufEnter /* call LoadCscope()
-autocmd FileType c,cpp call LoadCscope()
-  " short command
-  cnoreabbrev csa cs add
-  cnoreabbrev csf cs find
-  cnoreabbrev csk cs kill
-  cnoreabbrev csr cs reset
-  cnoreabbrev css cs show
-  cnoreabbrev csh cs help
+    set csto=0
 
-  nmap fs :cs find s <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
-  nmap fg :cs find g <C-R>=expand("<cword>")<CR><CR>
-  nmap fc :cs find c <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
-  nmap ft :cs find t <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
-  nmap fe :cs find e <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
-  nmap ff :cs find f <C-R>=expand("<cfile>")<CR><CR>:botright copen<CR>
-  nmap fi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:botright copen<CR>
-  nmap fd :cs find d <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
+    " auto load cscope.out file (TODO:not work in window now)
+    function! LoadCscope()
+        let db = findfile("cscope.out", ".;")
+        if (!empty(db))
+            echo db
+            let path = strpart(db, 0, match(db, "/cscope.out$"))
+            set nocscopeverbose " suppress 'duplicate connection' error
+            exe "cs add " . db . " " . path
+            set cscopeverbose
+        endif
+    endfunction
+    "au BufEnter /* call LoadCscope()
+    autocmd FileType c,cpp call LoadCscope()
+    " short command
+    cnoreabbrev csa cs add
+    cnoreabbrev csf cs find
+    cnoreabbrev csk cs kill
+    cnoreabbrev csr cs reset
+    cnoreabbrev css cs show
+    cnoreabbrev csh cs help
+
+    nmap fs :cs find s <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
+    nmap fg :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap fc :cs find c <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
+    nmap ft :cs find t <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
+    nmap fe :cs find e <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
+    nmap ff :cs find f <C-R>=expand("<cfile>")<CR><CR>:botright copen<CR>
+    nmap fi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:botright copen<CR>
+    nmap fd :cs find d <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
 endif
 "}}}
 " TagHighlight {{{
@@ -372,10 +372,10 @@ let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+            \ 'default' : '',
+            \ 'vimshell' : $HOME.'/.vimshell_hist',
+            \ 'scheme' : $HOME.'/.gosh_completions'
+            \ }
 
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
@@ -391,9 +391,9 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  "return neocomplete#smart_close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+    "return neocomplete#smart_close_popup() . "\<CR>"
+    " For no inserting <CR> key.
+    return pumvisible() ? neocomplete#close_popup() : "\<CR>"
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
