@@ -527,6 +527,9 @@ noremap <F3> :Autoformat<CR>
 let g:formatdef_my_custom_c = '"astyle --mode=c --style=allman -CSxWYm0M40k1W3pHUfjs4xexC80"'
 let g:formatters_c = ['my_custom_c']
 "}}}
+" mhinz/vim-signify {{{
+Plugin 'mhinz/vim-signify'
+" }}}
 "}}}
 " Syntax  {{{
 Plugin 'vim-ruby/vim-ruby'
