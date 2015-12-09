@@ -526,6 +526,12 @@ Plugin 'Chiel92/vim-autoformat'
 noremap <F3> :Autoformat<CR>
 let g:formatdef_my_custom_c = '"astyle --mode=c --style=allman -CSxWYm0M40k1W3pHUfjs4xexC80"'
 let g:formatters_c = ['my_custom_c']
+let g:formatdef_pep8 = '"autopep8 "'
+let g:formatters_python = ['pep8']
+"}}}
+" vim-autopep8 {{{
+Plugin 'tell-k/vim-autopep8'
+let g:autopep8_disable_show_diff=1
 "}}}
 "}}}
 " Syntax  {{{
