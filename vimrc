@@ -83,7 +83,7 @@ set nowrap         " Line wrapping off
 set laststatus=2   " Always show the statusline
 set cmdheight=2    " Make the command area two lines high
 if exists('+colorcolumn')
-    set colorcolumn=80 " Color the 80th column differently
+    set colorcolumn=120 " Color the 120th column differently
 endif
 "}}}
 " GVIM{{{
@@ -408,6 +408,8 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" Prevent Pydoc preview window
+set completeopt-=preview
 
 " neosnippet key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -533,6 +535,9 @@ let g:formatters_python = ['pep8']
 Plugin 'tell-k/vim-autopep8'
 let g:autopep8_disable_show_diff=1
 "}}}
+" mhinz/vim-signify {{{
+Plugin 'mhinz/vim-signify'
+" }}}
 "}}}
 " Syntax  {{{
 Plugin 'vim-ruby/vim-ruby'
