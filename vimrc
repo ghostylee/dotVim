@@ -41,11 +41,16 @@ Plugin 'tomasr/molokai'
 " tomorrow color {{{
 Plugin 'chriskempson/tomorrow-theme'
 "}}}
+" seoul256 {{{
+Plugin 'junegunn/seoul256.vim'
+"}}}
+" gruvbox {{{
+Plugin 'morhetz/gruvbox'
+"}}}
 " Theme{{{
 set t_Co=256
 set background=dark
-colorscheme solarized
-"colorscheme vividchalk
+colorscheme seoul256
 "}}}
 "}}}
 " Backups {{{
