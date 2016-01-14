@@ -2,57 +2,10 @@
 " vimrc from ghostylee <ghosty.lee.1984@gmail.com>
 " =================================================
 
-" Vundle {{{
-" ----------------------------------------
-
+" Regular Vim Configuration {{{
 set nocompatible " be iMproved
 filetype off     " required!
 set shell=/bin/bash
-set rtp+=~/.vim/bundle/vundle/
-
-call vundle#rc()
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/vundle'
-let g:vundle_default_git_proto = 'https'
-nmap <Leader>bi :PluginInstall<CR>
-nmap <Leader>bu :PluginInstall!<CR> " Because this also updates
-nmap <Leader>bc :PluginClean<CR>
-"}}}
-" Regular Vim Configuration (No Plugins Needed) {{{
-" ----------------------------------------
-" Color {{{
-" ---------------
-" jellybeans.vim colorscheme tweaks {{{
-" ---------------
-Plugin 'nanotech/jellybeans.vim'
-" Make cssAttrs (center, block, etc.) the same color as units
-hi! link cssAttr Constant
-"}}}
-" solaried color {{{
-Plugin 'altercation/vim-colors-solarized'
-"}}}
-" vividchalk color {{{
-Plugin 'tpope/vim-vividchalk'
-"}}}
-" molokai color {{{
-Plugin 'tomasr/molokai'
-"}}}
-" tomorrow color {{{
-Plugin 'chriskempson/tomorrow-theme'
-"}}}
-" seoul256 {{{
-Plugin 'junegunn/seoul256.vim'
-"}}}
-" gruvbox {{{
-Plugin 'morhetz/gruvbox'
-"}}}
-" Theme{{{
-set t_Co=256
-set background=dark
-colorscheme seoul256
-"}}}
-"}}}
 " Backups {{{
 " ---------------
 set backup
@@ -180,33 +133,6 @@ autocmd FileType xml set foldmethod=syntax
 set path+=;,include;inc;
 "}}}
 "}}}
-" Platform Specific Configuration {{{
-" ----------------------------------------
-if has('win32') || has('win64')
-    " Set height and width on Windows
-    set lines=60
-    set columns=120
-
-    set shell=$COMSPEC
-
-    " Windows has a nasty habit of launching gVim in the wrong working directory
-    "cd ~
-elseif has('gui_macvim')
-    " MacVim
-
-    " Custom Menlo font for Powerline
-    " From: https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
-    set guifont=Menlo\ for\ Powerline:h12
-
-    " Hide Toolbar in MacVim
-    if has("gui_running")
-        set guioptions=egmrt
-    endif
-
-    " Use option (alt) as meta key.
-    set macmeta
-endif
-"}}}
 " Bindings {{{
 " ----------------------------------------
 " Set leader to , {{{
@@ -291,12 +217,6 @@ nnoremap ]q :cnext<cr>
 "}}}
 " Plugin Configuration {{{
 " ----------------------------------------
-" Tagbar{{{
-" ---------------
-Plugin 'majutsushi/tagbar'
-let g:tagbar_width = 30
-nnoremap <leader>t :TagbarToggle<cr>
-"}}}
 " ctags {{{
 " ---------------
 set tags=tags;,~/_vimtags  "; here let vim go to up folds until find one tags file
@@ -346,62 +266,41 @@ if has('cscope')
     nmap fd :cs find d <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
 endif
 "}}}
-" TagHighlight {{{
-" ---------------
-Plugin 'abudden/TagHighlight'
-nnoremap ut :UpdateTypesFile <cr>
-" colors for Taghighlight {{{
-hi Class guifg=#800080 guibg=NONE gui=NONE ctermfg=90 ctermbg=NONE cterm=NONE
-hi DefinedName guifg=#EE82EE guibg=NONE gui=NONE ctermfg=175 ctermbg=NONE cterm=NONE
-hi Function guifg=#007777 guibg=NONE gui=NONE ctermfg=30 ctermbg=NONE cterm=NONE
-hi EnumerationValue guifg=#C000C0 guibg=NONE gui=NONE ctermfg=164 ctermbg=NONE cterm=NONE
-hi EnumerationName guifg=#FF22FF guibg=NONE gui=NONE ctermfg=201 ctermbg=NONE cterm=NONE
-hi Member guifg=#A9A9A9 guibg=NONE gui=NONE ctermfg=145 ctermbg=NONE cterm=NONE
-hi Structure guifg=#FF8080 guibg=NONE gui=NONE ctermfg=210 ctermbg=NONE cterm=NONE
-hi Type guifg=#FF8000 guibg=NONE gui=NONE ctermfg=208 ctermbg=NONE cterm=NONE
-hi Union guifg=#808080 guibg=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
-hi GlobalVariable guifg=#df5f87 guibg=NONE gui=NONE ctermfg=168 ctermbg=NONE cterm=NONE
-hi LocalVariable guifg=#AAA14C guibg=NONE gui=NONE ctermfg=143 ctermbg=NONE cterm=NONE
-hi GlobalConstant guifg=#df5f87 guibg=NONE gui=NONE ctermfg=168 ctermbg=NONE cterm=NONE
-hi cPreCondit guifg=#ff8700 guibg=NONE gui=NONE ctermfg=208 ctermbg=NONE cterm=NONE
-hi cTODO guifg=#ff0000 guibg=#dfff00 gui=NONE ctermfg=196 ctermbg=190 cterm=NONE
-"}}}
-"}}}
-" SuperTab {{{
-" ---------------
-"Plugin 'ervandew/supertab'
-"let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
-"let g:SuperTabMappingBackward = '<c-p>'
-"}}}
+" vim-plug {{{
+call plug#begin('~/.vim/plugged')
+" Theme {{{
+Plug 'junegunn/seoul256.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-vividchalk'
+Plug 'tomasr/molokai'
+Plug 'chriskempson/tomorrow-theme'
+Plug 'morhetz/gruvbox'
+call plug#end()
+set t_Co=256
+set background=dark
+colorscheme seoul256
+" }}}
+" Airline {{{
+Plug 'bling/vim-airline'
+let g:airline_theme="simple"
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+" }}}
 " NERDTree {{{
-" ---------------
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 let g:NERDTreeDirArrows=0
 nnoremap <leader>e :NERDTreeToggle<CR>
-"}}}
+" }}}
+" Tagbar {{{
+Plug 'majutsushi/tagbar'
+let g:tagbar_width = 30
+nnoremap <leader>t :TagbarToggle<cr>
+" }}}
 " Indent Line {{{
-" ---------------
-Plugin 'Yggdroot/indentLine'
-"}}}
-" Tabular {{{
-" ---------------
-Plugin 'godlygeek/tabular'
-nmap <Leader>t= :Tabularize /=<CR>
-vmap <Leader>t= :Tabularize /=<CR>
-nmap <Leader>t: :Tabularize /:\zs<CR>
-vmap <Leader>t: :Tabularize /:\zs<CR>
-nmap <Leader>t, :Tabularize /,\zs<CR>
-vmap <Leader>t, :Tabularize /,\zs<CR>
-nmap <Leader>t> :Tabularize /=>\zs<CR>
-vmap <Leader>t> :Tabularize /=>\zs<CR>
-nmap <Leader>t- :Tabularize /-<CR>
-vmap <Leader>t- :Tabularize /-<CR>
-nmap <Leader>t" :Tabularize /"<CR>
-vmap <Leader>t" :Tabularize /"<CR>
-"}}}
+Plug 'Yggdroot/indentLine'
+" }}}
 " Fugitive {{{
-" ---------------
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 nmap <Leader>gc :Gcommit<CR>
 nmap <Leader>gw :Gwrite<CR>
 nmap <Leader>gs :Gstatus<CR>
@@ -411,100 +310,31 @@ nmap <Leader>gu :Git pull<CR>
 nmap <Leader>gd :Gdiff<CR>
 " Exit a diff by closing the diff window
 nmap <Leader>gx :wincmd h<CR>:q<CR>
-"}}}
-" ctrlp.vim {{{
-" ---------------
-Plugin 'kien/ctrlp.vim'
-let g:ctrlp_map = '<leader>,'
-let g:ctrlp_cmd = 'CtrlP'
-" Ensure max height isn't too large. (for performance)
-let g:ctrlp_max_height = 10
-
-nmap <leader>. :CtrlPClearCache<cr>:CtrlP<cr>
-nmap <leader>l :CtrlPLine<cr>
-nmap <leader>b :CtrlPBuff<cr>
-nmap <leader>m :CtrlPBufTag<cr>
-nmap <leader>M :CtrlPBufTagAll<cr>
-let g:ctrlp_clear_cache_on_exit = 1
-" ctrlp leaves stale caches behind if there is another vim process runnin
-" which didn't use ctrlp. so we clear all caches on each new vim invocation
-cal ctrlp#clra()
-" jump to buffer in the same tab if already open
-let g:ctrlp_switch_buffer = 1
-" if in git repo - use git file listing command, should be faster
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files --exclude-standard -cod']
-
-" open multiple files with <c-z> to mark and <c-o> to open. v - opening in
-" vertical splits; j - jump to first open buffer; r - open first in current
-buffer
-let g:ctrlp_open_multiple_files = 'vjr'
-
-let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'mixed', 'line']
-"}}}
-" airline {{{
-" ---------------
-Plugin 'bling/vim-airline'
-let g:airline_theme="simple"
-let g:airline_powerline_fonts = 1
-"}}}
-" nerdcommenter {{{
-" ---------------
-Plugin 'scrooloose/nerdcommenter'
-"}}}
-" delimitMate {{{
-" ---------------
-Plugin 'Raimondi/delimitMate'
-"}}}
-" gitv {{{
-" ---------------
-Plugin 'gregsexton/gitv'
-"}}}
-" gitgutter {{{
-" ---------------
-"Plugin 'airblade/vim-gitgutter'
-"}}}
-" pytest.vim {{{
-" ---------------
-Plugin 'alfredodeza/pytest.vim'
-" Pytest
-nmap <silent><Leader>f <Esc>:Pytest file<CR>
-"}}}
-" vim-flake8 {{{
-" ---------------
-Plugin 'nvie/vim-flake8'
-"}}}
-" vim-autoformat {{{
-" ---------------
-Plugin 'Chiel92/vim-autoformat'
-noremap <F3> :Autoformat<CR>
-let g:formatdef_my_custom_c = '"astyle --mode=c --style=allman -CSxWYm0M40k1W3pHUfjs4xexC80"'
-let g:formatters_c = ['my_custom_c']
-"}}}
-" mhinz/vim-signify {{{
-Plugin 'mhinz/vim-signify'
 " }}}
-" Valloric/YouCompleteMe {{{
-Plugin 'Valloric/YouCompleteMe'
+" Nerdcommenter {{{
+Plug 'scrooloose/nerdcommenter'
+" }}}
+" Signify {{{
+Plug 'mhinz/vim-signify'
+" }}}
+" YouCompleteMe {{{
+Plug 'Valloric/YouCompleteMe'
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 let g:ycm_confirm_extra_conf = 0
 "autocmd FileType c nnoremap <buffer> <silent> <C-]> :YcmCompleter GoTo<cr>
 " }}}
-" jeaye/color_coded {{{
-Plugin 'jeaye/color_coded'
+" Color_coded {{{
+Plug 'jeaye/color_coded'
 "}}}
+" delimitMate {{{
+Plug 'Raimondi/delimitMate'
 "}}}
-" Syntax  {{{
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tsaleh/vim-tmux'
-Plugin 'Puppet-Syntax-Highlighting'
-Plugin 'JSON.vim'
-Plugin 'tpope/vim-cucumber'
-Plugin 'tpope/vim-haml'
-Plugin 'tpope/vim-markdown'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'vitaly/vim-syntastic-coffee'
-Plugin 'vim-scripts/jade.vim'
-Plugin 'wavded/vim-stylus'
-Plugin 'VimClojure'
-Plugin 'skammer/vim-css-color'
+" vim-autoformat {{{
+Plug 'Chiel92/vim-autoformat'
+noremap <F3> :Autoformat<CR>
+let g:formatdef_my_custom_c = '"astyle --mode=c --style=allman -CSxWYm0M40k1W3pHUfjs4xexC80"'
+let g:formatters_c = ['my_custom_c']
+"}}}
+call plug#end()
+" }}}
 "}}}

@@ -2,3 +2,5 @@ bundle/*
 backup/*
 tmp/*
 *.pyc
+autoload
+plugged
