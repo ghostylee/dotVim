@@ -215,8 +215,6 @@ nnoremap [q :cprev<cr>
 nnoremap ]q :cnext<cr>
 "}}}
 "}}}
-" Plugin Configuration {{{
-" ----------------------------------------
 " ctags {{{
 " ---------------
 set tags=tags;,~/_vimtags  "; here let vim go to up folds until find one tags file
@@ -266,7 +264,8 @@ if has('cscope')
     nmap fd :cs find d <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
 endif
 "}}}
-" vim-plug {{{
+" Plugins {{{
+" ----------------------------------------
 call plug#begin('~/.vim/plugged')
 " Theme {{{
 Plug 'junegunn/seoul256.vim'
@@ -338,9 +337,18 @@ let g:formatdef_pep8 = '"autopep8 "'
 let g:formatters_python = ['pep8']
 "}}}
 " vim-autopep8 {{{
-Plugin 'tell-k/vim-autopep8'
+Plug 'tell-k/vim-autopep8'
 let g:autopep8_disable_show_diff=1
 "}}}
-call plug#end()
+" Ultisnips {{{
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 " }}}
+call plug#end()
 "}}}
