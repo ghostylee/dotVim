@@ -327,7 +327,7 @@ Plug 'jeaye/color_coded'
 "}}}
 " delimitMate {{{
 Plug 'Raimondi/delimitMate'
-"}}}
+" }}}
 " vim-autoformat {{{
 Plug 'Chiel92/vim-autoformat'
 noremap <F3> :Autoformat<CR>
@@ -349,6 +349,23 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+" }}}
+" Easy-align {{{
+Plug 'junegunn/vim-easy-align'
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+" }}}
+" gitv {{{
+Plug 'gregsexton/gitv'
+" }}}
+" multiple-cursors {{{
+Plug 'terryma/vim-multiple-cursors'
+" }}}
+" mhinz/vim-grepper {{{
+Plug 'mhinz/vim-grepper'
 " }}}
 call plug#end()
 "}}}
