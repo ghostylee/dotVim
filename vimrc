@@ -93,6 +93,7 @@ set guioptions-=m " Menubar
 set guioptions-=L " hide left scroll
 set guioptions-=b " hide bottom scroll
 set showtabline=0 " hide tab
+set lines=80
 "}}}
 " Behaviors {{{
 " ---------------
