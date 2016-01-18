@@ -284,6 +284,7 @@ Plug 'bling/vim-airline'
 let g:airline_theme="simple"
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='bubblegum'
 " }}}
 " NERDTree {{{
 Plug 'scrooloose/nerdtree'
@@ -320,7 +321,7 @@ Plug 'mhinz/vim-signify'
 Plug 'Valloric/YouCompleteMe'
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 let g:ycm_confirm_extra_conf = 0
-"autocmd FileType c nnoremap <buffer> <silent> <C-]> :YcmCompleter GoTo<cr>
+autocmd FileType c nnoremap <buffer> <silent> <C-]> :YcmCompleter GoTo<cr>
 " }}}
 " Color_coded {{{
 Plug 'jeaye/color_coded'
@@ -363,6 +364,11 @@ Plug 'gregsexton/gitv'
 " }}}
 " multiple-cursors {{{
 Plug 'terryma/vim-multiple-cursors'
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
 " }}}
 " mhinz/vim-grepper {{{
 Plug 'mhinz/vim-grepper'
