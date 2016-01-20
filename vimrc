@@ -214,6 +214,9 @@ nnoremap ap :cclose<cr>
 nnoremap [q :cprev<cr>
 nnoremap ]q :cnext<cr>
 "}}}
+" buffer jump
+nnoremap bj :bprevious<cr>
+nnoremap bk :bnext<cr>
 "}}}
 " ctags {{{
 " ---------------
