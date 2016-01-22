@@ -374,12 +374,13 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 " }}}
-" mhinz/vim-grepper {{{
-Plug 'mhinz/vim-grepper'
-" }}}
-" junegunn/fzf {{{
+" fzf {{{
 Plug 'junegunn/fzf' , { 'dir': '~/.fzf', 'do': './install --all' }
 nmap <silent> <leader>f  :FZF ~<cr>
+" }}}
+" ag {{{
+Plug 'rking/ag.vim'
+let g:ag_working_path_mode="r"
 " }}}
 call plug#end()
 "}}}
