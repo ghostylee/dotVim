@@ -214,9 +214,10 @@ nnoremap ap :cclose<cr>
 nnoremap [q :cprev<cr>
 nnoremap ]q :cnext<cr>
 "}}}
-" buffer jump
+" buffer jump {{
 nnoremap bj :bprevious<cr>
 nnoremap bk :bnext<cr>
+" }}
 "}}}
 " ctags {{{
 " ---------------
@@ -375,6 +376,10 @@ let g:multi_cursor_quit_key='<Esc>'
 " }}}
 " mhinz/vim-grepper {{{
 Plug 'mhinz/vim-grepper'
+" }}}
+" junegunn/fzf {{{
+Plug 'junegunn/fzf' , { 'dir': '~/.fzf', 'do': './install --all' }
+nmap <silent> <leader>f  :FZF ~<cr>
 " }}}
 call plug#end()
 "}}}
