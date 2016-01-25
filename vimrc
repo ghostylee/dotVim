@@ -23,6 +23,7 @@ set langmenu=zh_CN.UTF-8  " chinese menu
 " Font {{{
 " ---------------
 if has('win32') || has('win64')
+    set shell=
     set guifont=DejaVu_Sans_Mono_for_Powerline:h10
     set guifontwide=Yahei_Mono:h10:cGB2312
 else
