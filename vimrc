@@ -262,7 +262,7 @@ if has('cscope')
     nmap fs :cs find s <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
     nmap fg :cs find g <C-R>=expand("<cword>")<CR><CR>
     nmap fc :cs find c <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
-    nmap ft :cs find t <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
+    "nmap ft :cs find t <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
     nmap fe :cs find e <C-R>=expand("<cword>")<CR><CR>:botright copen<CR>
     nmap ff :cs find f <C-R>=expand("<cfile>")<CR><CR>:botright copen<CR>
     nmap fi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:botright copen<CR>
@@ -382,6 +382,7 @@ nmap <silent> <leader>f  :FZF ~<cr>
 " ag {{{
 Plug 'rking/ag.vim'
 let g:ag_working_path_mode="r"
+nmap ft :Ag <cword><CR>
 " }}}
 call plug#end()
 "}}}
