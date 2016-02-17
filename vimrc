@@ -26,6 +26,9 @@ if has('win32') || has('win64')
     set shell=
     set guifont=DejaVu_Sans_Mono_for_Powerline:h10
     set guifontwide=Yahei_Mono:h10:cGB2312
+elseif has("gui_macvim")
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
+    set guifontwide=Yahei_Mono:h10:cGB2312
 else
     "set guifont=YaHei\ Mono\ 11
     "set guifont=YaHei\ Consolas\ hybrid\ for\ Powerline\ 11
