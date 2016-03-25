@@ -388,5 +388,8 @@ Plug 'rking/ag.vim'
 let g:ag_working_path_mode="r"
 nmap ft :Ag <cword><CR>
 " }}}
+" devicons {{{
+Plug 'ryanoasis/vim-devicons'
+" }}}
 call plug#end()
 "}}}
