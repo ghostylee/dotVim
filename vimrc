@@ -287,8 +287,8 @@ set background=dark
 colorscheme seoul256
 " }}}
 " Airline {{{
-Plug 'bling/vim-airline'
-let g:airline_theme="simple"
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='bubblegum'
@@ -329,6 +329,8 @@ Plug 'Valloric/YouCompleteMe'
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_show_diagnostics_ui = 0
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
 "autocmd FileType c nnoremap <buffer> <silent> <C-]> :YcmCompleter GoTo<cr>
 " }}}
 " Color_coded {{{
