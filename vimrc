@@ -284,7 +284,11 @@ Plug 'morhetz/gruvbox'
 call plug#end()
 set t_Co=256
 set background=dark
-colorscheme seoul256
+try
+    colorscheme seoul256
+catch /^Vim\%((\a\+)\)\=:E185/
+    colorscheme desert
+endtry
 " }}}
 " Airline {{{
 Plug 'vim-airline/vim-airline'
