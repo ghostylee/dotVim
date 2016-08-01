@@ -110,9 +110,8 @@ highlight SpecialKey guifg=#444444 guibg=NONE gui=NONE ctermfg=238 ctermbg=NONE 
 "}}}
 " Sounds {{{
 " ---------------
-set noerrorbells
-set novisualbell
-set t_vb=
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
 "}}}
 " Mouse {{{
 " ---------------
