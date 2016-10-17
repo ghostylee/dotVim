@@ -337,7 +337,9 @@ let g:ycm_add_preview_to_completeopt = 0
 "autocmd FileType c nnoremap <buffer> <silent> <C-]> :YcmCompleter GoTo<cr>
 " }}}
 " Color_coded {{{
-Plug 'jeaye/color_coded'
+if has("gui_running")
+    Plug 'jeaye/color_coded'
+endif
 "}}}
 " delimitMate {{{
 Plug 'Raimondi/delimitMate'
