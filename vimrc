@@ -244,14 +244,16 @@ if has('cscope')
         let db = findfile("cscope.out", ".;")
         if (!empty(db))
             echo db
-            let path = strpart(db, 0, match(db, "/cscope.out$"))
+            "let dbpath = strpart(db, 0, match(db, "/cscope.out$"))
+            let dbpath = matchstr(db, ".*/")
             set nocscopeverbose " suppress 'duplicate connection' error
-            exe "cs add " . db . " " . path
+            exe "cs add " . db . " " . dbpath
             set cscopeverbose
         endif
     endfunction
     "au BufEnter /* call LoadCscope()
-    autocmd FileType c,cpp call LoadCscope()
+    "autocmd FileType c,cpp call LoadCscope()
+    nmap fa :call LoadCscope()<CR>
     " short command
     cnoreabbrev csa cs add
     cnoreabbrev csf cs find
