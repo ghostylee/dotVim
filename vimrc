@@ -301,6 +301,8 @@ let g:airline_theme='bubblegum'
 " NERDTree {{{
 Plug 'scrooloose/nerdtree'
 let g:NERDTreeDirArrows=0
+let g:NERDTreeCascadeSingleChildDir=0
+let g:NERDTreeCascadeOpenSingleChildDir=0
 nnoremap <leader>e :NERDTreeToggle<CR>
 " }}}
 " Tagbar {{{
