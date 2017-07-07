@@ -32,7 +32,7 @@ elseif has("gui_macvim")
 else
     "set guifont=YaHei\ Mono\ 11
     "set guifont=YaHei\ Consolas\ hybrid\ for\ Powerline\ 11
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12
+    set guifont=DejaVuSansMonoForPowerline\ NF\ 12
     set guifontwide=WenQuanYi\ Zen\ Hei\ Mono\ 12
 endif
 "}}}
