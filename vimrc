@@ -402,5 +402,8 @@ nmap ft :Ag <cword><CR>
 " devicons {{{
 Plug 'ryanoasis/vim-devicons'
 " }}}
+" vim-tmux-navigator {{{
+Plug 'christoomey/vim-tmux-navigator'
+" }}}
 call plug#end()
 "}}}
