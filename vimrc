@@ -312,6 +312,7 @@ nnoremap <leader>t :TagbarToggle<cr>
 " }}}
 " Indent Line {{{
 Plug 'Yggdroot/indentLine'
+let g:indentLine_conceallevel=0
 " }}}
 " Fugitive {{{
 Plug 'tpope/vim-fugitive'
