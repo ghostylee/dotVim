@@ -405,5 +405,11 @@ Plug 'ryanoasis/vim-devicons'
 " vim-tmux-navigator {{{
 Plug 'christoomey/vim-tmux-navigator'
 " }}}
+" vim-slumlord {{{
+Plug 'scrooloose/vim-slumlord'
+" }}}
+" plantuml-syntax {{{
+Plug 'aklt/plantuml-syntax'
+" }}}
 call plug#end()
 "}}}
