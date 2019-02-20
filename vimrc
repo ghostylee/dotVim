@@ -411,5 +411,12 @@ Plug 'scrooloose/vim-slumlord'
 " plantuml-syntax {{{
 Plug 'aklt/plantuml-syntax'
 " }}}
+" vim-pandoc {{{
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+" }}}
+" goyo {{{
+Plug 'junegunn/goyo.vim'
+" }}}
 call plug#end()
 "}}}
