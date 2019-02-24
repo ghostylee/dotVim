@@ -47,6 +47,9 @@ set cmdheight=2    " Make the command area two lines high
 if exists('+colorcolumn')
     set colorcolumn=120 " Color the 120th column differently
 endif
+let &t_SI = "\<esc>[5 q"
+let &t_SR = "\<esc>[5 q"
+let &t_EI = "\<esc>[2 q"
 "}}}
 " GVIM{{{
 " ---------------
@@ -333,6 +336,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'mhinz/vim-signify'
 " }}}
 " YouCompleteMe {{{
+if has("vim")
 Plug 'Valloric/YouCompleteMe'
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 let g:ycm_confirm_extra_conf = 0
@@ -340,6 +344,7 @@ let g:ycm_show_diagnostics_ui = 0
 set completeopt-=preview
 let g:ycm_add_preview_to_completeopt = 0
 "autocmd FileType c nnoremap <buffer> <silent> <C-]> :YcmCompleter GoTo<cr>
+endif
 " }}}
 " Color_coded {{{
 if has("gui_running")
@@ -362,6 +367,7 @@ Plug 'tell-k/vim-autopep8'
 let g:autopep8_disable_show_diff=1
 "}}}
 " Ultisnips {{{
+if has("vim")
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-l>"
@@ -370,6 +376,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+endif
 " }}}
 " Easy-align {{{
 Plug 'junegunn/vim-easy-align'
@@ -417,6 +424,13 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 " }}}
 " goyo {{{
 Plug 'junegunn/goyo.vim'
+" }}}
+" vim-orgmode {{{
+Plug 'jceb/vim-orgmode'
+" }}}
+" vimwiki {{{
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 " }}}
 call plug#end()
 "}}}
