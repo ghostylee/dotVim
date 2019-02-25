@@ -431,6 +431,18 @@ Plug 'jceb/vim-orgmode'
 " vimwiki {{{
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_use_calendar = 1
 " }}}
+" calendar.vim{{{
+Plug 'itchyny/calendar.vim'
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+let g:calendar_first_day = 'monday'
+let g:calendar_date_endian = 'big'
+let g:calendar_frame = 'unicode'
+let g:calendar_week_number = 1
+nnoremap <silent> <leader>c :Calendar -view=month -split=horizontal -position=below<cr>
+autocmd FileType calendar nmap <buffer> <CR> :<C-u>call vimwiki#diary#calendar_action(b:calendar.day().get_day(), b:calendar.day().get_month(), b:calendar.day().get_year(), b:calendar.day().week(), "V")<CR>
+"}}}
 call plug#end()
 "}}}
