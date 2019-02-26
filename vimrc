@@ -139,13 +139,11 @@ set path+=;,include;inc;
 "}}}
 "}}}
 " neovim Configuration{{{
-if has('nvim')
 tnoremap <Esc> <C-\><C-n>
 tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j
 tnoremap <A-k> <C-\><C-n><C-w>k
 tnoremap <A-l> <C-\><C-n><C-w>l
-endif
 "}}}
 " Bindings {{{
 " ----------------------------------------
@@ -345,7 +343,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'mhinz/vim-signify'
 " }}}
 " YouCompleteMe {{{
-if has("vim")
 Plug 'Valloric/YouCompleteMe'
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 let g:ycm_confirm_extra_conf = 0
@@ -353,7 +350,6 @@ let g:ycm_show_diagnostics_ui = 0
 set completeopt-=preview
 let g:ycm_add_preview_to_completeopt = 0
 "autocmd FileType c nnoremap <buffer> <silent> <C-]> :YcmCompleter GoTo<cr>
-endif
 " }}}
 " Color_coded {{{
 if has("gui_running")
@@ -376,7 +372,6 @@ Plug 'tell-k/vim-autopep8'
 let g:autopep8_disable_show_diff=1
 "}}}
 " Ultisnips {{{
-if has("vim")
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-l>"
@@ -385,7 +380,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-endif
 " }}}
 " Easy-align {{{
 Plug 'junegunn/vim-easy-align'
@@ -439,7 +433,10 @@ Plug 'jceb/vim-orgmode'
 " }}}
 " vimwiki {{{
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md',
+            \ 'auto_toc':1 ,
+            \ 'auto_tags':1,
+            \ 'auto_diary_index':1}]
 let g:vimwiki_use_calendar = 1
 let g:vimwiki_folding = 'expr'
 " }}}
