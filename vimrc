@@ -138,6 +138,15 @@ autocmd FileType xml set foldmethod=syntax
 set path+=;,include;inc;
 "}}}
 "}}}
+" neovim Configuration{{{
+if has('nvim')
+tnoremap <Esc> <C-\><C-n>
+tnoremap <A-h> <C-\><C-n><C-w>h
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
+endif
+"}}}
 " Bindings {{{
 " ----------------------------------------
 " Set leader to , {{{
@@ -432,6 +441,7 @@ Plug 'jceb/vim-orgmode'
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_use_calendar = 1
+let g:vimwiki_folding = 'expr'
 " }}}
 " calendar.vim{{{
 Plug 'itchyny/calendar.vim'
