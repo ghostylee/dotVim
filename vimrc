@@ -463,5 +463,12 @@ let g:vimwiki_folding = 'expr'
 " vim-markdown {{{
 Plug 'plasticboy/vim-markdown'
 " }}}
+" taskwiki {{{
+Plug 'tbabej/taskwiki'
+" }}}
+" markdown-preview {{{
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+let g:mkdp_browser = 'qutebrowser'
+" }}}
 call plug#end()
 "}}}
