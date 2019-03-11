@@ -448,6 +448,14 @@ let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md',
             \ 'auto_diary_index':1}]
 let g:vimwiki_use_calendar = 1
 let g:vimwiki_folding = 'expr'
+:nmap <M-+> <Plug>VimwikiIncrementListItem
+:vmap <M-+> <Plug>VimwikiIncrementListItem
+:nmap <M--> <Plug>VimwikiDecrementListItem
+:vmap <M--> <Plug>VimwikiDecrementListItem
+:map >> <Plug>VimwikiIncreaseLvlSingleItem
+:map >>> <Plug>VimwikiIncreaseLvlWholeItem
+:map << <Plug>VimwikiDecreaseLvlSingleItem
+:map <<< <Plug>VimwikiDecreaseLvlWholeItem
 " }}}
 " calendar.vim{{{
 "Plug 'itchyny/calendar.vim'
@@ -462,9 +470,6 @@ let g:vimwiki_folding = 'expr'
 "}}}
 " vim-markdown {{{
 Plug 'plasticboy/vim-markdown'
-" }}}
-" taskwiki {{{
-Plug 'tbabej/taskwiki'
 " }}}
 " markdown-preview {{{
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
