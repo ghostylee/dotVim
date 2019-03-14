@@ -158,12 +158,10 @@ command Q q
 command WQ wq
 command Wq wq
 " }}}
-
 " use ; for : {{{
 nnoremap ; :
 vnoremap ; :
 "}}}
-
 " Make line completion easier {{{
 imap <C-l> <C-x><C-l>
 "}}}
@@ -227,10 +225,10 @@ nnoremap ap :cclose<cr>
 nnoremap [q :cprev<cr>
 nnoremap ]q :cnext<cr>
 "}}}
-" buffer jump {{
+" buffer jump {{{
 nnoremap bj :bprevious<cr>
 nnoremap bk :bnext<cr>
-" }}
+" }}}
 "}}}
 " ctags {{{
 " ---------------
@@ -287,17 +285,23 @@ endif
 " ----------------------------------------
 call plug#begin('~/.vim/plugged')
 " Theme {{{
-Plug 'junegunn/seoul256.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'tpope/vim-vividchalk'
-Plug 'tomasr/molokai'
-Plug 'chriskempson/tomorrow-theme'
-Plug 'morhetz/gruvbox'
+"Plug 'junegunn/seoul256.vim'
+"Plug 'altercation/vim-colors-solarized'
+"Plug 'tpope/vim-vividchalk'
+"Plug 'tomasr/molokai'
+"Plug 'chriskempson/tomorrow-theme'
+"Plug 'morhetz/gruvbox'
+"Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'arcticicestudio/nord-vim'
 call plug#end()
 set t_Co=256
 set background=dark
+
 try
-    colorscheme seoul256
+    colorscheme nord
+    "let g:nord_italic = 1
+    "let g:nord_underline = 1
+    "let g:nord_cursor_line_number_background = 1
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert
 endtry
@@ -307,7 +311,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='bubblegum'
+"let g:airline_theme='bubblegum'
 " }}}
 " NERDTree {{{
 Plug 'scrooloose/nerdtree'
