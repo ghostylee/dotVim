@@ -446,7 +446,7 @@ nnoremap <Leader>wa :OrgBufferAgendaWeek<CR>
 " }}}
 " vimwiki {{{
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md',
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/', 'syntax': 'markdown', 'ext': '.md',
             \ 'auto_toc':1 ,
             \ 'auto_tags':1,
             \ 'auto_diary_index':1}]
