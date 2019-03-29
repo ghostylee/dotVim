@@ -137,6 +137,12 @@ autocmd FileType xml set foldmethod=syntax
 " Path setting {{{
 set path+=;,include;inc;
 "}}}
+" Spell Check{{{
+set spelllang=en
+set spellfile=~/.vim/spell/en.utf-8.add
+" Toggle spelling mode with ,s
+nmap <silent> <leader>s :set spell!<CR>
+"}}}
 "}}}
 " neovim Configuration{{{
 tnoremap <Esc> <C-\><C-n>
@@ -177,8 +183,6 @@ endfunc
 " Leader Commands {{{
 " ---------------
 
-" Toggle spelling mode with ,s
-nmap <silent> <leader>s :set spell!<CR>
 " Edit vimrc with ,v
 nmap <silent> <leader>v :e ~/.vim/vimrc<CR>
 
@@ -478,6 +482,12 @@ Plug 'plasticboy/vim-markdown'
 " markdown-preview {{{
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 let g:mkdp_browser = 'qutebrowser'
+" }}}
+" vim-grammarous {{{
+Plug 'rhysd/vim-grammarous'
+" }}}
+" vim-you-autocorrect {{{
+Plug 'sedm0784/vim-you-autocorrect'
 " }}}
 call plug#end()
 "}}}
