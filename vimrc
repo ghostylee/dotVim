@@ -45,7 +45,8 @@ set nowrap         " Line wrapping off
 set laststatus=2   " Always show the statusline
 set cmdheight=2    " Make the command area two lines high
 if exists('+colorcolumn')
-    set colorcolumn=120 " Color the 120th column differently
+    "set colorcolumn=120 " Color the 120th column differently
+    set colorcolumn=0
 endif
 let &t_SI = "\<esc>[5 q"
 let &t_SR = "\<esc>[5 q"
@@ -139,7 +140,6 @@ set path+=;,include;inc;
 "}}}
 " Spell Check{{{
 set spelllang=en
-set spellfile=~/.vim/spell/en.utf-8.add
 " Toggle spelling mode with ,s
 nmap <silent> <leader>s :set spell!<CR>
 "}}}
@@ -456,6 +456,7 @@ let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/', 'syntax': 'markdown', 'ext'
             \ 'auto_diary_index':1}]
 let g:vimwiki_use_calendar = 1
 let g:vimwiki_folding = 'expr'
+let g:vimwiki_global_ext = 0
 :nmap <M-+> <Plug>VimwikiIncrementListItem
 :vmap <M-+> <Plug>VimwikiIncrementListItem
 :nmap <M--> <Plug>VimwikiDecrementListItem
