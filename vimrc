@@ -490,5 +490,8 @@ Plug 'rhysd/vim-grammarous'
 " vim-you-autocorrect {{{
 Plug 'sedm0784/vim-you-autocorrect'
 " }}}
+" vim-nix {{{
+Plug 'LnL7/vim-nix'
+" }}}
 call plug#end()
 "}}}
