@@ -294,7 +294,7 @@ call plug#begin('~/.vim/plugged')
 "Plug 'tpope/vim-vividchalk'
 "Plug 'tomasr/molokai'
 "Plug 'chriskempson/tomorrow-theme'
-"Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 "Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'arcticicestudio/nord-vim'
 call plug#end()
@@ -302,7 +302,7 @@ set t_Co=256
 set background=dark
 
 try
-    colorscheme nord
+    colorscheme gruvbox
     "let g:nord_italic = 1
     "let g:nord_underline = 1
     "let g:nord_cursor_line_number_background = 1
@@ -315,7 +315,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-"let g:airline_theme='bubblegum'
+let g:airline_theme='gruvbox'
 " }}}
 " NERDTree {{{
 Plug 'scrooloose/nerdtree'
@@ -431,8 +431,8 @@ Plug 'scrooloose/vim-slumlord'
 Plug 'aklt/plantuml-syntax'
 " }}}
 " vim-pandoc {{{
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
+"Plug 'vim-pandoc/vim-pandoc'
+"Plug 'vim-pandoc/vim-pandoc-syntax'
 " }}}
 " goyo {{{
 Plug 'junegunn/goyo.vim'
