@@ -410,7 +410,7 @@ let g:multi_cursor_quit_key='<Esc>'
 " }}}
 " fzf {{{
 Plug 'junegunn/fzf' , { 'dir': '~/.fzf', 'do': './install --all' }
-nmap <silent> <leader>f  :FZF ~<cr>
+nmap <silent> <leader>f  :FZF<cr>
 " }}}
 " ag {{{
 Plug 'rking/ag.vim'
