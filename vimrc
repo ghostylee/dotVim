@@ -492,5 +492,8 @@ Plug 'sedm0784/vim-you-autocorrect'
 " vim-nix {{{
 Plug 'LnL7/vim-nix'
 " }}}
+" vim-cucumber {{{
+Plug 'tpope/vim-cucumber'
+" }}}
 call plug#end()
 "}}}
