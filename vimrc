@@ -91,6 +91,7 @@ set autoindent
 set smartindent
 set smarttab
 set expandtab
+set conceallevel=0
 "}}}
 " Searching {{{
 " ---------------
@@ -331,6 +332,8 @@ nnoremap <leader>t :TagbarToggle<cr>
 " }}}
 " Indent Line {{{
 Plug 'Yggdroot/indentLine'
+let g:indentLine_setConceal = 0
+let g:indentLine_concealcursor = ""
 " }}}
 " Fugitive {{{
 Plug 'tpope/vim-fugitive'
