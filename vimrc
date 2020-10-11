@@ -484,8 +484,12 @@ let g:coc_global_extensions = [
             \ 'coc-lists',
             \ 'coc-tag',
             \ 'coc-word',
-            \ 'coc-syntax'
+            \ 'coc-syntax',
+            \ 'coc-emoji'
             \ ]
+let g:coc_user_config = {
+            \ 'coc.source.emoji.filetypes': ["markdown", 'vimwiki']
+            \ }
 inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" :  <SID>check_back_space() ? "<TAB>" :  coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 function! s:check_back_space() abort
