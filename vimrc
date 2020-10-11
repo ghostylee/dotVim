@@ -23,7 +23,6 @@ set langmenu=zh_CN.UTF-8  " chinese menu
 " Font {{{
 " ---------------
 if has('win32') || has('win64')
-    set shell=
     set guifont=DejaVu_Sans_Mono_for_Powerline:h10
     set guifontwide=Yahei_Mono:h10:cGB2312
 elseif has("gui_macvim")
@@ -368,16 +367,6 @@ let g:formatters_python = ['pep8']
 Plug 'tell-k/vim-autopep8'
 let g:autopep8_disable_show_diff=1
 "}}}
-" Ultisnips {{{
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-l>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-" }}}
 " Easy-align {{{
 Plug 'junegunn/vim-easy-align'
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -443,6 +432,7 @@ let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md',
             \ 'auto_tags':1,
             \ 'auto_diary_index':1}]
 let g:vimwiki_use_calendar = 1
+let g:vimwiki_table_mappings = 0
 let g:vimwiki_folding = 'expr'
 let g:vimwiki_global_ext = 0
 :nmap <M-+> <Plug>VimwikiIncrementListItem
@@ -483,6 +473,37 @@ Plug 'LnL7/vim-nix'
 " }}}
 " vim-cucumber {{{
 Plug 'tpope/vim-cucumber'
+" }}}
+" coc.nvim {{{
+Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile' }
+let g:coc_global_extensions = [
+            \ 'coc-clangd',
+            \ 'coc-cmake',
+            \ 'coc-rls',
+            \ 'coc-highlight',
+            \ 'coc-json',
+            \ 'coc-lists',
+            \ 'coc-tag',
+            \ 'coc-word',
+            \ 'coc-syntax'
+            \ ]
+inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" :  <SID>check_back_space() ? "<TAB>" :  coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+if exists('*complete_info')
+    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 " }}}
 call plug#end()
 "}}}
