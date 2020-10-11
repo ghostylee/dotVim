@@ -386,8 +386,9 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 " }}}
 " fzf {{{
-Plug 'junegunn/fzf' , { 'dir': '~/.fzf', 'do': './install --all' }
-nmap <silent> <leader>f  :FZF<cr>
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+nmap <silent> <C-t> :GitFiles<CR>
 " }}}
 " ag {{{
 Plug 'rking/ag.vim'
@@ -458,8 +459,7 @@ let g:vimwiki_global_ext = 0
 Plug 'plasticboy/vim-markdown'
 " }}}
 " markdown-preview {{{
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
-let g:mkdp_browser = 'qutebrowser'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " }}}
 " vim-grammarous {{{
 Plug 'rhysd/vim-grammarous'
