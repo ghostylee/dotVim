@@ -5,7 +5,6 @@
 " Regular Vim Configuration {{{
 set nocompatible " be iMproved
 filetype off     " required!
-set shell=/bin/bash
 " Backups {{{
 " ---------------
 set backup
@@ -433,7 +432,7 @@ let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md',
             \ 'auto_diary_index':1}]
 let g:vimwiki_use_calendar = 1
 let g:vimwiki_table_mappings = 0
-let g:vimwiki_folding = 'expr'
+let g:vimwiki_folding = 'custom'
 let g:vimwiki_global_ext = 0
 :nmap <M-+> <Plug>VimwikiIncrementListItem
 :vmap <M-+> <Plug>VimwikiIncrementListItem
