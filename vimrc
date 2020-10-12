@@ -417,6 +417,19 @@ let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md',
             \ 'auto_tags':1,
             \ 'auto_diary_index':1}]
 let g:vimwiki_table_mappings = 0
+let g:vimwiki_key_mappings =
+            \ {
+            \   'all_maps': 1,
+            \   'global': 1,
+            \   'headers': 1,
+            \   'text_objs': 1,
+            \   'table_format': 1,
+            \   'table_mappings': 0,
+            \   'lists': 1,
+            \   'links': 1,
+            \   'html': 1,
+            \   'mouse': 0,
+            \ }
 let g:vimwiki_folding = 'custom'
 let g:vimwiki_filetypes = ['markdown', 'pandoc']
 let g:vimwiki_global_ext = 0
@@ -465,7 +478,7 @@ let g:coc_global_extensions = [
             \ 'coc-emoji'
             \ ]
 let g:coc_user_config = {
-            \ 'coc.source.emoji.filetypes': ["markdown", 'vimwiki']
+            \ 'coc.source.emoji.filetypes': ["markdown", 'vimwiki.markdown.pandoc']
             \ }
 inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" :  <SID>check_back_space() ? "<TAB>" :  coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
