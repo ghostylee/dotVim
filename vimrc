@@ -407,23 +407,8 @@ Plug 'scrooloose/vim-slumlord'
 " plantuml-syntax {{{
 Plug 'aklt/plantuml-syntax'
 " }}}
-" vim-pandoc {{{
-"Plug 'vim-pandoc/vim-pandoc'
-"Plug 'vim-pandoc/vim-pandoc-syntax'
-" }}}
 " goyo {{{
 Plug 'junegunn/goyo.vim'
-" }}}
-" vim-orgmode {{{
-Plug 'jceb/vim-orgmode'
-Plug 'tpope/vim-speeddating'
-Plug 'mattn/calendar-vim'
-let g:org_agenda_files = ['~/org/*.org']
-nnoremap <leader><Tab> :OrgCheckBoxToggle<CR>
-nnoremap <Leader>nc :OrgCheckBoxNewBelow<CR>
-nnoremap <Leader>nd :OrgDateInsertTimestampActiveCmdLine<CR>
-nnoremap <Leader>td :OrgBufferAgendaTodo<CR>
-nnoremap <Leader>wa :OrgBufferAgendaWeek<CR>
 " }}}
 " vimwiki {{{
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
@@ -431,9 +416,9 @@ let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md',
             \ 'auto_toc':1 ,
             \ 'auto_tags':1,
             \ 'auto_diary_index':1}]
-let g:vimwiki_use_calendar = 1
 let g:vimwiki_table_mappings = 0
 let g:vimwiki_folding = 'custom'
+let g:vimwiki_filetypes = ['markdown', 'pandoc']
 let g:vimwiki_global_ext = 0
 :nmap <M-+> <Plug>VimwikiIncrementListItem
 :vmap <M-+> <Plug>VimwikiIncrementListItem
@@ -444,19 +429,11 @@ let g:vimwiki_global_ext = 0
 :map << <Plug>VimwikiDecreaseLvlSingleItem
 :map <<< <Plug>VimwikiDecreaseLvlWholeItem
 " }}}
-" calendar.vim{{{
-"Plug 'itchyny/calendar.vim'
-"let g:calendar_google_calendar = 1
-"let g:calendar_google_task = 1
-"let g:calendar_first_day = 'monday'
-"let g:calendar_date_endian = 'big'
-"let g:calendar_frame = 'unicode'
-"let g:calendar_week_number = 1
-"nnoremap <silent> <leader>c :Calendar -view=month -split=horizontal -position=below<cr>
-"autocmd FileType calendar nmap <buffer> <CR> :<C-u>call vimwiki#diary#calendar_action(b:calendar.day().get_day(), b:calendar.day().get_month(), b:calendar.day().get_year(), b:calendar.day().week(), "V")<CR>
-"}}}
-" vim-markdown {{{
-Plug 'plasticboy/vim-markdown'
+" vim-pandoc {{{
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+let g:pandoc#folding#level=3
+let g:pandoc#folding#fdc=3
 " }}}
 " markdown-preview {{{
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
