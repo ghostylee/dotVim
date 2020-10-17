@@ -478,7 +478,8 @@ let g:coc_global_extensions = [
             \ 'coc-emoji'
             \ ]
 let g:coc_user_config = {
-            \ 'coc.source.emoji.filetypes': ["markdown", 'vimwiki.markdown.pandoc']
+            \ 'coc.source.emoji.filetypes': ['markdown', 'vimwiki.markdown.pandoc'],
+            \ 'coc.source.emoji.triggerCharacters': [ '.']
             \ }
 inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" :  <SID>check_back_space() ? "<TAB>" :  coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
