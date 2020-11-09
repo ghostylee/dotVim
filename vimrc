@@ -7,9 +7,9 @@ set nocompatible " be iMproved
 filetype off     " required!
 " Backups {{{
 " ---------------
-set backup
-set backupdir=~/.vim/backup
-set directory=~/.vim/tmp
+set nobackup
+set noswapfile
+set noundofile
 "}}}
 " Language & encoding{{{
 " ---------------
@@ -425,7 +425,7 @@ let g:vimwiki_key_mappings =
             \   'text_objs': 0,
             \   'table_format': 0,
             \   'table_mappings': 0,
-            \   'lists': 0,
+            \   'lists': 1,
             \   'links': 1,
             \   'html': 0,
             \   'mouse': 0,
@@ -445,11 +445,15 @@ let g:vimwiki_global_ext = 0
 " vim-pandoc {{{
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-rmarkdown'
 let g:pandoc#folding#level=3
 let g:pandoc#folding#fdc=3
 " }}}
 " markdown-preview {{{
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+" }}}
+" blindFS/vim-reveal {{{
+Plug 'blindFS/vim-reveal'
 " }}}
 " vim-grammarous {{{
 Plug 'rhysd/vim-grammarous'
@@ -510,6 +514,12 @@ function! s:show_documentation()
   endif
 endfunction
 
+" }}}
+" csv.vim {{{
+Plug 'chrisbra/csv.vim'
+" }}}
+" neoformat {{{
+Plug 'sbdchd/neoformat'
 " }}}
 call plug#end()
 "}}}
