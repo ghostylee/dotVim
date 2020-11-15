@@ -448,6 +448,7 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-rmarkdown'
 let g:pandoc#folding#level=3
 let g:pandoc#folding#fdc=3
+let g:pandoc#compiler#arguments = "--standalone --slide-level=2 --highlight-style=breezeDark"
 " }}}
 " markdown-preview {{{
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
