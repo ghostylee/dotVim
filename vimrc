@@ -22,8 +22,8 @@ set langmenu=zh_CN.UTF-8  " chinese menu
 " Font {{{
 " ---------------
 if has('win32') || has('win64')
-    set guifont=DejaVu_Sans_Mono_for_Powerline:h10
-    set guifontwide=Yahei_Mono:h10:cGB2312
+    set guifont=FiraCode\ NF:h20
+    set guifontwide=Yahei_Mono:h20:cGB2312
 elseif has("gui_macvim")
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
     set guifontwide=Yahei_Mono:h10:cGB2312
@@ -412,7 +412,7 @@ Plug 'junegunn/goyo.vim'
 " }}}
 " vimwiki {{{
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md',
+let g:vimwiki_list = [{'path': '~/Nextcloud/Notes/', 'syntax': 'markdown', 'ext': '.md',
             \ 'auto_toc':1 ,
             \ 'auto_tags':1,
             \ 'auto_diary_index':1}]
@@ -468,59 +468,102 @@ Plug 'LnL7/vim-nix'
 " vim-cucumber {{{
 Plug 'tpope/vim-cucumber'
 " }}}
-" coc.nvim {{{
-Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile' }
-let g:coc_global_extensions = [
-            \ 'coc-clangd',
-            \ 'coc-cmake',
-            \ 'coc-rls',
-            \ 'coc-highlight',
-            \ 'coc-json',
-            \ 'coc-lists',
-            \ 'coc-tag',
-            \ 'coc-word',
-            \ 'coc-syntax',
-            \ 'coc-emoji'
-            \ ]
-let g:coc_user_config = {
-            \ 'coc.source.emoji.filetypes': ['markdown', 'vimwiki.markdown.pandoc'],
-            \ 'coc.source.emoji.triggerCharacters': [ '.']
-            \ }
-inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" :  <SID>check_back_space() ? "<TAB>" :  coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-if exists('*complete_info')
-    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocActionAsync('doHover')
-  endif
-endfunction
-
-" }}}
 " csv.vim {{{
 Plug 'chrisbra/csv.vim'
 " }}}
 " neoformat {{{
 Plug 'sbdchd/neoformat'
 " }}}
+" nvim-lspconfig {{{
+Plug 'neovim/nvim-lspconfig'
+" }}}
+" nvim-treesitter {{{
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" }}}
+" nvim-compe {{{
+Plug 'hrsh7th/nvim-compe'
+" }}}
 call plug#end()
 "}}}
+" lua config {{{
+lua require('lspconfig').pyright.setup{}
+lua require('nvim-treesitter.configs').setup { ensure_installed = "maintained", highlight = { enable = true, disable = {}, }, }
+lua require 'nvim-treesitter.install'.compilers = { "clang" }
+lua << EOF
+vim.o.completeopt = "menuone,noselect"
+require('compe').setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  resolve_timeout = 800;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = {
+    border = { '', '' ,'', ' ', '', '', '', ' ' }, -- the border option is the same as `|help nvim_open_win|`
+    winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+    max_width = 120,
+    min_width = 60,
+    max_height = math.floor(vim.o.lines * 0.3),
+    min_height = 1,
+  };
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    vsnip = true;
+    ultisnips = true;
+    luasnip = true;
+    spell = true;
+  };
+}
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+local check_back_space = function()
+    local col = vim.fn.col('.') - 1
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+end
+
+-- Use (s-)tab to:
+--- move to prev/next item in completion menuone
+--- jump to prev/next snippet's placeholder
+_G.tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-n>"
+  elseif vim.fn['vsnip#available'](1) == 1 then
+    return t "<Plug>(vsnip-expand-or-jump)"
+  elseif check_back_space() then
+    return t "<Tab>"
+  else
+    return vim.fn['compe#complete']()
+  end
+end
+_G.s_tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-p>"
+  elseif vim.fn['vsnip#jumpable'](-1) == 1 then
+    return t "<Plug>(vsnip-jump-prev)"
+  else
+    -- If <S-Tab> is not working in your terminal, change it to <C-h>
+    return t "<S-Tab>"
+  end
+end
+
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+EOF
+
+" }}}
