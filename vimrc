@@ -476,6 +476,11 @@ Plug 'sbdchd/neoformat'
 " }}}
 " nvim-lspconfig {{{
 Plug 'neovim/nvim-lspconfig'
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
 " }}}
 " nvim-treesitter {{{
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -487,6 +492,13 @@ call plug#end()
 "}}}
 " lua config {{{
 lua require('lspconfig').pyright.setup{}
+lua require'lspconfig'.bashls.setup{}
+lua require'lspconfig'.clangd.setup{}
+lua require'lspconfig'.cmake.setup{}
+lua require'lspconfig'.pyright.setup{}
+lua require'lspconfig'.rnix.setup{}
+lua require'lspconfig'.rust_analyzer.setup{}
+lua require'lspconfig'.yamlls.setup{}
 lua require('nvim-treesitter.configs').setup { ensure_installed = "maintained", highlight = { enable = true, disable = {}, }, }
 lua require 'nvim-treesitter.install'.compilers = { "clang" }
 lua << EOF
