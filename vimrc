@@ -324,9 +324,9 @@ let g:NERDTreeCascadeOpenSingleChildDir=0
 nnoremap <leader>e :NERDTreeToggle<CR>
 " }}}
 " Tagbar {{{
-Plug 'majutsushi/tagbar'
-let g:tagbar_width = 30
-nnoremap <leader>t :TagbarToggle<cr>
+"Plug 'majutsushi/tagbar'
+"let g:tagbar_width = 30
+"nnoremap <leader>t :TagbarToggle<cr>
 " }}}
 " Indent Line {{{
 Plug 'Yggdroot/indentLine'
@@ -487,6 +487,10 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " }}}
 " nvim-compe {{{
 Plug 'hrsh7th/nvim-compe'
+" }}}
+" symbols-outline {{{
+Plug 'simrat39/symbols-outline.nvim'
+nnoremap <leader>t :SymbolsOutline<cr>
 " }}}
 call plug#end()
 "}}}
