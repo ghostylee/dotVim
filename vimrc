@@ -598,7 +598,10 @@ local colors = {
     red = '#ec5f67'
     }
 require('lualine').setup {
-  options = {theme = 'gruvbox'},
+  options = {
+    section_separators = {'', ''},
+    component_separators = {'', ''}
+  },
   sections = {
     lualine_b = {
       'branch',
