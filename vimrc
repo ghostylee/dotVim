@@ -109,6 +109,8 @@ set listchars=tab:▸\ ,trail:¬
 "Invisible character colors
 highlight NonText guifg=#444444 guibg=NONE gui=NONE ctermfg=238 ctermbg=NONE cterm=NONE
 highlight SpecialKey guifg=#444444 guibg=NONE gui=NONE ctermfg=238 ctermbg=NONE cterm=NONE
+set termguicolors
+
 
 "}}}
 " Sounds {{{
@@ -309,13 +311,6 @@ catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert
 endtry
 " }}}
-" Airline {{{
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='gruvbox'
-" }}}
 " NERDTree {{{
 Plug 'scrooloose/nerdtree'
 let g:NERDTreeDirArrows=0
@@ -492,6 +487,12 @@ Plug 'hrsh7th/nvim-compe'
 Plug 'simrat39/symbols-outline.nvim'
 nnoremap <leader>t :SymbolsOutline<cr>
 " }}}
+" nvim-web-devicons {{{
+Plug 'kyazdani42/nvim-web-devicons' "
+" }}}
+" lualine {{{
+Plug 'hoob3rt/lualine.nvim'
+" }}}
 call plug#end()
 "}}}
 " lua config {{{
@@ -580,6 +581,12 @@ vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
+EOF
+
+lua << EOF
+require('lualine').setup {
+  options = {theme = 'gruvbox'},
+}
 EOF
 
 " }}}
