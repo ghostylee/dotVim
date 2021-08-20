@@ -578,6 +578,9 @@ Plug 'onsails/lspkind-nvim'
 " nvim-comment {{{
 Plug 'terrortylor/nvim-comment'
 " }}}
+" nvim-ts-rainbow {{{
+Plug 'p00f/nvim-ts-rainbow'
+" }}}
 call plug#end()
 "}}}
 " lua config {{{
@@ -589,7 +592,20 @@ lua require'lspconfig'.pyright.setup{}
 lua require'lspconfig'.rnix.setup{}
 lua require'lspconfig'.rust_analyzer.setup{}
 lua require'lspconfig'.yamlls.setup{}
-lua require('nvim-treesitter.configs').setup { ensure_installed = "maintained", highlight = { enable = true, disable = {}, }, }
+lua << EOF
+require('nvim-treesitter.configs').setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true,
+    disable = {},
+  },
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+    max_file_lines = nil,
+  }
+}
+EOF
 lua require 'nvim-treesitter.install'.compilers = { "clang" }
 lua << EOF
 vim.o.completeopt = "menuone,noselect"
