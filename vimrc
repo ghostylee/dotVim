@@ -581,6 +581,9 @@ Plug 'terrortylor/nvim-comment'
 " nvim-ts-rainbow {{{
 Plug 'p00f/nvim-ts-rainbow'
 " }}}
+" lsp-colors {{{
+Plug 'folke/lsp-colors.nvim'
+" }}}
 call plug#end()
 "}}}
 " lua config {{{
