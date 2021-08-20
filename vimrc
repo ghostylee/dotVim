@@ -460,7 +460,6 @@ nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
 " }}}
 " nvim-treesitter {{{
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -583,6 +582,19 @@ Plug 'p00f/nvim-ts-rainbow'
 " }}}
 " lsp-colors {{{
 Plug 'folke/lsp-colors.nvim'
+" }}}
+" lspsaga {{{
+Plug 'glepnir/lspsaga.nvim'
+nnoremap <silent>K :Lspsaga hover_doc<CR>
+nnoremap <silent>gh :Lspsaga lsp_finder<CR>
+nnoremap <silent><leader>ca :Lspsaga code_action<CR>
+vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
+
+nnoremap <silent>[e :Lspsaga diagnostic_jump_next<CR>
+nnoremap <silent>]e :Lspsaga diagnostic_jump_prev<CR>
+
+nnoremap <silent><C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
+nnoremap <silent><C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
 " }}}
 call plug#end()
 "}}}
