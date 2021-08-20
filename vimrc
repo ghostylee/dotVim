@@ -328,9 +328,6 @@ nmap <Leader>gd :Gdiff<CR>
 " Exit a diff by closing the diff window
 nmap <Leader>gx :wincmd h<CR>:q<CR>
 " }}}
-" Nerdcommenter {{{
-Plug 'scrooloose/nerdcommenter'
-" }}}
 " Signify {{{
 Plug 'mhinz/vim-signify'
 " }}}
@@ -578,6 +575,9 @@ highlight NvimTreeFolderIcon guibg=blue
 " lspkind-nvim {{{
 Plug 'onsails/lspkind-nvim'
 " }}}
+" nvim-comment {{{
+Plug 'terrortylor/nvim-comment'
+" }}}
 call plug#end()
 "}}}
 " lua config {{{
@@ -739,5 +739,5 @@ require('lspkind').init({
     },
 })
 EOF
-
+lua require('nvim_comment').setup({ line_mapping = "<leader>cc", operator_mapping = "<leader>c"})
 " }}}
