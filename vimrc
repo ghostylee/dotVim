@@ -602,7 +602,7 @@ Plug 'ray-x/lsp_signature.nvim'
 call plug#end()
 "}}}
 " lua config {{{
-lua require('lspconfig').pyright.setup{}
+lua require'lspconfig'.pyright.setup{}
 lua require'lspconfig'.bashls.setup{}
 lua require'lspconfig'.clangd.setup{}
 lua require'lspconfig'.cmake.setup{}
@@ -610,6 +610,10 @@ lua require'lspconfig'.pyright.setup{}
 lua require'lspconfig'.rnix.setup{}
 lua require'lspconfig'.rust_analyzer.setup{}
 lua require'lspconfig'.yamlls.setup{}
+lua vim.fn.sign_define("LspDiagnosticsSignError", {text = "", texthl = "GruvboxRed"})
+lua vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", texthl = "GruvboxYellow"})
+lua vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", texthl = "GruvboxBlue"})
+lua vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", texthl = "GruvboxAqua"})
 lua << EOF
 require('nvim-treesitter.configs').setup {
   ensure_installed = "maintained",
