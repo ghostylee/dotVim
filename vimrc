@@ -596,6 +596,9 @@ nnoremap <silent>]e :Lspsaga diagnostic_jump_prev<CR>
 nnoremap <silent><C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
 nnoremap <silent><C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
 " }}}
+" lsp_signature {{{
+Plug 'ray-x/lsp_signature.nvim'
+" }}}
 call plug#end()
 "}}}
 " lua config {{{
@@ -771,4 +774,5 @@ require('lspkind').init({
 })
 EOF
 lua require('nvim_comment').setup({ line_mapping = "<leader>cc", operator_mapping = "<leader>c"})
+lua require "lsp_signature".setup()
 " }}}
