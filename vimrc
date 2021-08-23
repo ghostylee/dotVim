@@ -451,9 +451,6 @@ Plug 'tpope/vim-cucumber'
 " csv.vim {{{
 Plug 'chrisbra/csv.vim'
 " }}}
-" neoformat {{{
-Plug 'sbdchd/neoformat'
-" }}}
 " nvim-lspconfig {{{
 Plug 'neovim/nvim-lspconfig'
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
@@ -599,6 +596,13 @@ nnoremap <silent><C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga
 " lsp_signature {{{
 Plug 'ray-x/lsp_signature.nvim'
 " }}}
+" formatter {{{
+Plug 'mhartington/formatter.nvim'
+nnoremap <silent> <leader>f :Format<CR>
+" }}}
+" vim-bitbake {{{
+Plug 'kergoth/vim-bitbake'
+" }}}
 call plug#end()
 "}}}
 " lua config {{{
@@ -680,8 +684,6 @@ end
 _G.tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-n>"
-  elseif vim.fn['vsnip#available'](1) == 1 then
-    return t "<Plug>(vsnip-expand-or-jump)"
   elseif check_back_space() then
     return t "<Tab>"
   else
@@ -779,4 +781,49 @@ require('lspkind').init({
 EOF
 lua require('nvim_comment').setup({ line_mapping = "<leader>cc", operator_mapping = "<leader>c"})
 lua require "lsp_signature".setup()
+lua << EOF
+require('formatter').setup({
+  logging = false,
+  filetype = {
+    cpp = {
+      function()
+        return {
+          exe = "clang-format",
+          args = {"--assume-filename", vim.api.nvim_buf_get_name(0)},
+          stdin = true,
+          cwd = vim.fn.expand('%:p:h')
+        }
+      end
+    },
+    cmake = {
+      function()
+        return {
+          exe = "cmake-format",
+          args = {vim.api.nvim_buf_get_name(0)},
+          stdin = true,
+          cwd = vim.fn.expand('%:p:h')
+        }
+      end
+    },
+    markdown = {
+      function()
+        return {
+          exe = "prettier",
+          args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+          stdin = true,
+        }
+      end
+    },
+    pandoc = {
+      function()
+        return {
+          exe = "prettier",
+          args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+          stdin = true,
+        }
+      end
+    },
+  }
+})
+EOF
 " }}}
