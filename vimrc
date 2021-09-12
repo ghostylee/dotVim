@@ -839,15 +839,18 @@ require('formatter').setup({
 require('orgmode').setup({
   org_agenda_files = {'~/Nextcloud/org/*'},
   org_default_notes_file = '~/Nextcloud/org/refile.org',
-  org_todo_keywords = {'TODO(t)', 'NEXT(n)', '|', 'DONE(d)'},
+  org_todo_keywords = { 'NOTE(n)', 'TODO(t)', 'NEXT(x)', '|', 'DONE(d)'},
+  org_todo_keyword_faces = {
+      NOTE = ':foreground gold :weight bold',
+      },
   org_agenda_templates = {
-      t = { description = 'Task', template = '* TODO %?\n %u', target = '~/Nextcloud/org/todo.org'},
+      t = { description = 'Task', template = '* TODO %?\n %u'},
       j = { description = 'Journal', template = '\n*** %<%Y-%m-%d> %<%A>\n**** %U\n\n%?', target = '~/Nextcloud/org/journal.org' }
       }
 })
 require("headlines").setup()
 require("org-bullets").setup {
-    symbols = { "◉", "○", "✸", "✿" }
+    symbols = {  "", "", "✿", "❀", "✸", "", "", "♥", "" ,"", ""}
     }
 EOF
 " }}}
