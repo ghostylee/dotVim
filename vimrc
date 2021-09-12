@@ -603,6 +603,15 @@ nnoremap <silent> <leader>f :Format<CR>
 " vim-bitbake {{{
 Plug 'kergoth/vim-bitbake'
 " }}}
+" orgmode.nvim {{{
+Plug 'kristijanhusak/orgmode.nvim'
+" }}}
+" headlines {{{
+Plug 'lukas-reineke/headlines.nvim'
+" }}}
+" org-bullets {{{
+Plug 'akinsho/org-bullets.nvim'
+" }}}
 call plug#end()
 "}}}
 " lua config {{{
@@ -667,8 +676,10 @@ require('compe').setup {
     ultisnips = true;
     luasnip = true;
     spell = true;
+    orgmode = true;
   };
 }
+
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
@@ -825,5 +836,18 @@ require('formatter').setup({
     },
   }
 })
+require('orgmode').setup({
+  org_agenda_files = {'~/Nextcloud/org/*'},
+  org_default_notes_file = '~/Nextcloud/org/refile.org',
+  org_todo_keywords = {'TODO(t)', 'NEXT(n)', '|', 'DONE(d)'},
+  org_agenda_templates = {
+      t = { description = 'Task', template = '* TODO %?\n %u', target = '~/Nextcloud/org/todo.org'},
+      j = { description = 'Journal', template = '\n*** %<%Y-%m-%d> %<%A>\n**** %U\n\n%?', target = '~/Nextcloud/org/journal.org' }
+      }
+})
+require("headlines").setup()
+require("org-bullets").setup {
+    symbols = { "◉", "○", "✸", "✿" }
+    }
 EOF
 " }}}
