@@ -839,7 +839,7 @@ require('formatter').setup({
 require('orgmode').setup({
   org_agenda_files = {'~/Nextcloud/org/*'},
   org_default_notes_file = '~/Nextcloud/org/refile.org',
-  org_todo_keywords = { 'NOTE(n)', 'TODO(t)', 'PROG(p)', 'NEXT(x)', '|', 'DONE(d)'},
+  org_todo_keywords = { 'TODO(t)', 'PROG(p)', 'NEXT(x)', '|', 'NOTE(n)','DONE(d)'},
   org_todo_keyword_faces = {
       NOTE = ':foreground #FE8019 :weight bold',
       TODO = ':foreground #FB4934 :weight bold',
@@ -849,6 +849,7 @@ require('orgmode').setup({
       },
   org_agenda_templates = {
       t = { description = 'Task', template = '* TODO %?\n %u'},
+      n = { description = 'Note', template = '* NOTE %?\n %u'},
       j = { description = 'Journal', template = '\n*** %<%Y-%m-%d> %<%A>\n**** %U\n\n%?', target = '~/Nextcloud/org/journal.org' }
       }
 })
