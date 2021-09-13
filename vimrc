@@ -839,9 +839,13 @@ require('formatter').setup({
 require('orgmode').setup({
   org_agenda_files = {'~/Nextcloud/org/*'},
   org_default_notes_file = '~/Nextcloud/org/refile.org',
-  org_todo_keywords = { 'NOTE(n)', 'TODO(t)', 'NEXT(x)', '|', 'DONE(d)'},
+  org_todo_keywords = { 'NOTE(n)', 'TODO(t)', 'PROG(p)', 'NEXT(x)', '|', 'DONE(d)'},
   org_todo_keyword_faces = {
-      NOTE = ':foreground gold :weight bold',
+      NOTE = ':foreground #FE8019 :weight bold',
+      TODO = ':foreground #FB4934 :weight bold',
+      PROG = ':foreground #83A598 :weight bold',
+      NEXT = ':foreground #FABD2F :weight bold',
+      DONE = ':foreground #B8BB26 :weight bold',
       },
   org_agenda_templates = {
       t = { description = 'Task', template = '* TODO %?\n %u'},
