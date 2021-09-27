@@ -612,6 +612,9 @@ Plug 'lukas-reineke/headlines.nvim'
 " org-bullets {{{
 Plug 'akinsho/org-bullets.nvim'
 " }}}
+" nvim-gps {{{
+Plug 'SmiteshP/nvim-gps'
+" }}}
 call plug#end()
 "}}}
 " lua config {{{
@@ -720,6 +723,23 @@ vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 EOF
 
 lua << EOF
+require("nvim-gps").setup({
+	icons = {
+		["class-name"] = ' ',      -- Classes and class-like objects
+		["function-name"] = ' ',   -- Functions
+		["method-name"] = ' ',     -- Methods (functions inside class-like objects)
+		["container-name"] = '⛶ ',  -- Containers (example: lua tables)
+		["tag-name"] = '炙'         -- Tags (example: html tags)
+	},
+	-- Disable any languages individually over here
+	-- Any language not disabled here is enabled by default
+	languages = {
+		-- ["bash"] = false,
+		-- ["go"] = false,
+	},
+	separator = ' > ',
+})
+local gps = require("nvim-gps")
 local colors = {
     bg = '#202328',
     fg = '#bbc2cf',
@@ -743,6 +763,9 @@ require('lualine').setup {
     lualine_b = {
       'branch',
       'diff'
+    },
+    lualine_c = {
+      { gps.get_location, condition = gps.is_available },
     },
     lualine_y = {
       {'diagnostics',
