@@ -461,8 +461,20 @@ nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
 " nvim-treesitter {{{
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " }}}
-" nvim-compe {{{
-Plug 'hrsh7th/nvim-compe'
+" nvim-cmp {{{
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/cmp-calc'
+Plug 'hrsh7th/cmp-emoji'
+" }}}
+" vim-vsnip {{{
+Plug 'hrsh7th/vim-vsnip'
+" }}}
+" friendly-snippets {{{
+Plug 'rafamadriz/friendly-snippets'
 " }}}
 " symbols-outline {{{
 Plug 'simrat39/symbols-outline.nvim'
@@ -647,40 +659,32 @@ EOF
 lua require 'nvim-treesitter.install'.compilers = { "clang" }
 lua << EOF
 vim.o.completeopt = "menuone,noselect"
-require('compe').setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  resolve_timeout = 800;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = {
-    border = { '', '' ,'', ' ', '', '', '', ' ' }, -- the border option is the same as `|help nvim_open_win|`
-    winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
-    max_width = 120,
-    min_width = 60,
-    max_height = math.floor(vim.o.lines * 0.3),
-    min_height = 1,
-  };
+local cmp = require'cmp'
 
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    vsnip = true;
-    ultisnips = true;
-    luasnip = true;
-    spell = true;
-    orgmode = true;
-  };
+cmp.setup {
+    snippet = {
+        expand = function(args)
+        -- For `vsnip` user.
+        vim.fn["vsnip#anonymous"](args.body)
+    end,
+    },
+    sources = {
+        { name = 'nvim_lsp' },
+        { name = 'buffer' },
+        { name = 'emoji' },
+        { name = 'path' },
+        { name = 'calc' },
+        { name = 'vsnip' },
+        { name = 'orgmode' }
+    },
+    mapping = {
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.close(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })
+    }
 }
 
 local t = function(str)
