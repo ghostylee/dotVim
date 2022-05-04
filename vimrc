@@ -488,15 +488,6 @@ Plug 'hoob3rt/lualine.nvim'
 " }}}
 " nvim-tree {{{
 Plug 'kyazdani42/nvim-tree.lua'
-let g:nvim_tree_window_picker_exclude = {
-  \   'filetype': [
-  \     'packer',
-  \     'qf'
-  \   ],
-  \   'buftype': [
-  \     'terminal'
-  \   ]
-  \ }
 " Dictionary of buffer option names mapped to a list of option values that
 " indicates to the window picker that the buffer's window should not be
 " selectable.
@@ -596,6 +587,9 @@ Plug 'akinsho/org-bullets.nvim'
 " nvim-gps {{{
 Plug 'SmiteshP/nvim-gps'
 " }}}
+" dockerfile {{{
+Plug 'ekalinin/Dockerfile.vim'
+" }}}
 call plug#end()
 "}}}
 " lua config {{{
@@ -607,13 +601,14 @@ lua require'lspconfig'.pyright.setup{}
 lua require'lspconfig'.rnix.setup{}
 lua require'lspconfig'.rust_analyzer.setup{}
 lua require'lspconfig'.yamlls.setup{}
+lua require'lspconfig'.dockerls.setup{}
 lua vim.fn.sign_define("LspDiagnosticsSignError", {text = "", texthl = "GruvboxRed"})
 lua vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", texthl = "GruvboxYellow"})
 lua vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", texthl = "GruvboxBlue"})
 lua vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", texthl = "GruvboxAqua"})
 lua << EOF
 require('nvim-treesitter.configs').setup {
-  ensure_installed = "maintained",
+  ensure_installed = "all",
   highlight = {
     enable = true,
     disable = {},
@@ -718,7 +713,7 @@ EOF
 
 lua << EOF
 require('lspkind').init({
-  with_text = true,
+  mode = "symbol_text",
   preset = 'codicons',
   symbol_map = {
     Text = "",
@@ -795,6 +790,9 @@ require('formatter').setup({
     },
   }
 })
+
+require('orgmode').setup_ts_grammar()
+
 require('orgmode').setup({
   org_agenda_files = {'~/Nextcloud/org/*'},
   org_default_notes_file = '~/Nextcloud/org/refile.org',
@@ -825,11 +823,6 @@ require'nvim-tree'.setup {
     hijack_netrw        = true,
     open_on_setup       = false,
     ignore_ft_on_setup  = {},
-    update_to_buf_dir   = {
-    enable = true,
-    auto_open = true,
-    },
-    auto_close          = false,
     open_on_tab         = false,
     hijack_cursor       = false,
     update_cwd          = false,
@@ -846,7 +839,6 @@ require'nvim-tree'.setup {
         width = 30,
         height = 30,
         side = 'left',
-        auto_resize = false,
         mappings = {
             custom_only = false,
             list = {}
