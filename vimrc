@@ -461,6 +461,13 @@ nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
 " nvim-treesitter {{{
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " }}}
+" telescope {{{
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope git_files<cr>
+nnoremap <leader>ag <cmd>Telescope live_grep<cr>
+" }}}
 " nvim-cmp {{{
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -504,19 +511,6 @@ Plug 'p00f/nvim-ts-rainbow'
 " lsp-colors {{{
 Plug 'folke/lsp-colors.nvim'
 " }}}
-" lspsaga {{{
-Plug 'glepnir/lspsaga.nvim'
-nnoremap <silent>K :Lspsaga hover_doc<CR>
-nnoremap <silent>gh :Lspsaga lsp_finder<CR>
-nnoremap <silent><leader>ca :Lspsaga code_action<CR>
-vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
-
-nnoremap <silent>[e :Lspsaga diagnostic_jump_next<CR>
-nnoremap <silent>]e :Lspsaga diagnostic_jump_prev<CR>
-
-nnoremap <silent><C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
-nnoremap <silent><C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
-" }}}
 " lsp_signature {{{
 Plug 'ray-x/lsp_signature.nvim'
 " }}}
@@ -535,9 +529,6 @@ Plug 'lukas-reineke/headlines.nvim'
 " }}}
 " org-bullets {{{
 Plug 'akinsho/org-bullets.nvim'
-" }}}
-" nvim-gps {{{
-Plug 'SmiteshP/nvim-gps'
 " }}}
 " dockerfile {{{
 Plug 'ekalinin/Dockerfile.vim'
@@ -606,23 +597,6 @@ cmp.setup {
 EOF
 
 lua << EOF
-require("nvim-gps").setup({
-	icons = {
-		["class-name"] = ' ',      -- Classes and class-like objects
-		["function-name"] = ' ',   -- Functions
-		["method-name"] = ' ',     -- Methods (functions inside class-like objects)
-		["container-name"] = '⛶ ',  -- Containers (example: lua tables)
-		["tag-name"] = '炙'         -- Tags (example: html tags)
-	},
-	-- Disable any languages individually over here
-	-- Any language not disabled here is enabled by default
-	languages = {
-		-- ["bash"] = false,
-		-- ["go"] = false,
-	},
-	separator = ' > ',
-})
-local gps = require("nvim-gps")
 local colors = {
     bg = '#202328',
     fg = '#bbc2cf',
@@ -646,9 +620,6 @@ require('lualine').setup {
     lualine_b = {
       'branch',
       'diff'
-    },
-    lualine_c = {
-      { gps.get_location, cond = gps.is_available },
     },
     lualine_y = {
       {'diagnostics',
@@ -773,8 +744,6 @@ lua << EOF
 require'nvim-tree'.setup {
     disable_netrw       = true,
     hijack_netrw        = true,
-    open_on_setup       = false,
-    ignore_ft_on_setup  = {},
     open_on_tab         = false,
     hijack_cursor       = false,
     update_cwd          = false,
@@ -789,7 +758,6 @@ require'nvim-tree'.setup {
     },
     view = {
         width = 30,
-        height = 30,
         side = 'left',
         mappings = {
             custom_only = false,
@@ -797,5 +765,8 @@ require'nvim-tree'.setup {
             }
         }
     }
+EOF
+lua << EOF
+require("symbols-outline").setup()
 EOF
 " }}}
