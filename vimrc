@@ -453,10 +453,6 @@ Plug 'chrisbra/csv.vim'
 " }}}
 " nvim-lspconfig {{{
 Plug 'neovim/nvim-lspconfig'
-nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
 " }}}
 " nvim-treesitter {{{
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -467,6 +463,11 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope git_files<cr>
 nnoremap <leader>ag <cmd>Telescope live_grep<cr>
+nnoremap <leader>fd <cmd>Telescope diagnostics<CR>
+nnoremap <silent> gd <cmd>Telescope lsp_definitions<CR>
+nnoremap <silent> gD <cmd>Telescope lsp_type_definitions<CR>
+nnoremap <silent> gr <cmd>Telescope lsp_references<CR>
+nnoremap <silent> gi <cmd>Telescope lsp_implementations<CR>
 " }}}
 " nvim-cmp {{{
 Plug 'hrsh7th/nvim-cmp'
@@ -543,7 +544,17 @@ lua require'lspconfig'.cmake.setup{}
 lua require'lspconfig'.pyright.setup{}
 lua require'lspconfig'.rnix.setup{}
 lua require'lspconfig'.rust_analyzer.setup{}
-lua require'lspconfig'.yamlls.setup{}
+lua << EOF
+require'lspconfig'.yamlls.setup{
+    settings = {
+        yaml = {
+            schemas = {
+                ["https://json.schemastore.org/bamboo-spec.json"] = "/bamboo-specs/*"
+            },
+        },
+    }
+}
+EOF
 lua require'lspconfig'.dockerls.setup{}
 lua vim.fn.sign_define("LspDiagnosticsSignError", {text = "", texthl = "GruvboxRed"})
 lua vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", texthl = "GruvboxYellow"})
